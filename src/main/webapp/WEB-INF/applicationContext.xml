@@ -9,7 +9,7 @@
     <context:annotation-config/>
     
 	<!-- Service -->
-	<bean id="calculatorService" class="com.adsandboards.web.service.impl.CalculatorImpl"/>
+	<bean id="loginService" class="com.adsandboards.web.service.impl.CalculatorImpl"/>
 	
 	<bean id="organizationService" class="com.adsandboards.web.service.impl.OrganizationServiceImpl"/>
 	
