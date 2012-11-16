@@ -10,10 +10,9 @@
         		$.ajax({
         			  type: "POST",	
         			  url: "/spring-hiber/add.htm",
-        			  data: "input1=" + in1 + "&input2=" + in2,
+        			  data: "username=" + in1 + "&password=" + in2,
         			  success: function(data) {
         			   $("#display").html(data);
-        			   
         			  }
         			});
         	});

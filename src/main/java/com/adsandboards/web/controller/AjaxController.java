@@ -17,9 +17,10 @@ public class AjaxController {
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean login(@RequestParam(value = "username") Integer input1,
-			@RequestParam(value = "password") Integer input2) {
-		logger.info("inside ajax controller");
+	public boolean login(@RequestParam(value = "username") String userName,
+			@RequestParam(value = "password") String password) {
+		logger.info("inside ajax controller" + userName + "  password:"
+				+ password);
 		// Integer sum = calculator.add(input1, input2);
 		// logger.info("calculated sum" + sum);
 		return false;
