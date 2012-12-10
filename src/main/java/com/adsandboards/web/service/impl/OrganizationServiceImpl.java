@@ -9,11 +9,8 @@ import com.adsandboards.web.service.OrganizationService;
 public class OrganizationServiceImpl extends
 		GenericServiceImpl<Organization, Long> implements OrganizationService {
 
-	private OrganizationDao organizationDao;
-
 	@Autowired
 	public OrganizationServiceImpl(OrganizationDao organizationDao) {
 		super(organizationDao);
-		this.organizationDao = organizationDao;
 	}
 }

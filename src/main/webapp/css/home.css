@@ -78,11 +78,11 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	float: left;
 }
 .topmenu ul {
+	display:inline;
 	height: 74px;
 	margin-left: 64px;
 	list-style-type: none;
 	position: absolute;
-    display: none;
 	z-index: 999;
 }
 .topmenu ul li {

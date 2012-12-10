@@ -9,11 +9,8 @@ import com.adsandboards.web.service.AccountService;
 public class AccountServiceImpl extends GenericServiceImpl<Account, Long>
 		implements AccountService {
 
-	private AccountDao accountDao;
-
 	@Autowired
 	public AccountServiceImpl(AccountDao accountDao) {
 		super(accountDao);
-		this.accountDao = accountDao;
 	}
 }

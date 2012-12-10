@@ -12,7 +12,7 @@
 					<div class="header">
 						<div class="header-top">
 							<h1>
-								Company <span>Name</span>
+								Ads & <span>Boards</span>
 							</h1>
 						</div>
 						<div class="topmenu">
@@ -26,11 +26,11 @@
 								<li><a href="admin/acc"> <span>View Accounts</span>
 								</a></li>
 								<li><a href="#">View Masters</a>
-									<ul>
+									<!-- <ul>
 										<li><a href="#">Country</a></li>
 										<li><a href="#">State</a></li>
 										<li><a href="#">City</a></li>
-									</ul></li>
+									</ul>--></li> 
 								<li><a href="#"><span>Contact</span></a></li>
 								<li><a href="#"><span>Resources</span></a></li>
 								<li><a href="#"><span>Links</span></a></li>
