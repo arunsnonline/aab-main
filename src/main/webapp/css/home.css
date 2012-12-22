@@ -12,25 +12,12 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	padding: 0px;
 	margin: 0px;
 }
-.page-out {
-	background-image: url(../images/top-texture.jpg);
-	background-repeat: no-repeat;
-	background-position: center top;
-	width: 100%;
-	float: left;
-}
-.page-in {
-	background-image: url(../images/bottom-rept.jpg);
-	background-repeat: repeat-x;
-	background-position: left bottom;
-	width: 100%;
-	float: left;
-}
+
 .page {
 	width: 1000px;
 	margin: 0px auto;
 }
-.main, .header {
+.header {
 	width: 1000px;
 	float: left;
 }
@@ -69,203 +56,57 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	margin-top: 92px;
 	margin-left: 27px;
 }
+
 .topmenu {
 	background-image: url(../images/menu-bg.jpg);
 	background-repeat: no-repeat;
-	background-position: left top;
 	width: 1000px;
 	height: 74px;
-	float: left;
+	float: right;
 }
 .topmenu ul {
-	display:inline;
-	height: 74px;
-	margin-left: 64px;
-	list-style-type: none;
-	position: absolute;
+	display:inline-table;
+	list-style: none;
+	position: relative;
 	z-index: 999;
 }
 .topmenu ul li {
 	background-image: url(../images/devider.jpg);
 	background-repeat: no-repeat;
 	background-position: left top;
-	height: 74px;
 	float: left;
-	padding-right: 13px;
-	padding-left: 13px;
-}
-.topmenu ul li a {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	line-height: 74px;
-	color: #FFFFFF;
-	text-decoration: none;
-	display: block;
-	height: 74px;
-	float: left;
-	padding-left: 15px;
-}
-.topmenu ul li a span {
-	display: block;
-	height: 74px;
-	float: left;
-	padding-right: 35px;
-	cursor: pointer;
-}
-.topmenu ul li a:hover {
-	background-image: url(../images/menu-left.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-.topmenu ul li a:hover span {
-	background-image: url(../images/menu-right.jpg);
-	background-repeat: no-repeat;
-	background-position: right top;
 }
 
-.topmenu li:hover ul {
+.topmenu ul li ul {
+	display: none;
+}
+
+.topmenu ul li:hover ul {
 	display: block;
 }
-.content {
-	background-color: #FFFFFF;
-	background-image: url(../images/body-top.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	width: 952px;
-	float: left;
-	padding: 30px 24px 0px 24px;
+
+.topmenu ul li:hover {
+		background: #4b545f;
 }
-.content-left {
-	background-image: url(../images/vline.jpg);
-	background-repeat: repeat-y;
-	background-position: right top;
-	width: 621px;
-	float: left;
-	padding-right: 21px;
+
+
+.topmenu ul li a {
+		display: block; padding: 25px 40px;
+		color: white; text-decoration: none;
+	}
+
+
+.topmenu ul ul {
+	background: #5f6975; border-radius: 0px; padding: 0;
+	position: absolute; top: 100%;
 }
-.row1 {
-	width: 621px;
-	float: left;
+.topmenu ul ul li {
+		float: none; 
+		border-top: 1px solid #6b727c;
+		border-bottom: 1px solid #575f6a;
+		position: relative;
 }
-.title {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 24px;
-	font-weight: normal;
-	color: #000000;
-	margin-bottom: 30px;
-}
-.title span {
-	color: #82ab01;
-}
-ul.list1 {
-	margin-top: 5px;
-	margin-left: 25px;
-	list-style-image: url(../images/bullet.jpg);
-}
-ul.list1 li {
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-.row2 {
-	background-image: url(../images/section-bg.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	width: 591px;
-	height: 233px;
-	float: left;
-	padding: 15px 15px 0px 15px;
-}
-.subtitle {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 18px;
-	font-weight: normal;
-	color: #171817;
-	margin-bottom: 10px;
-}
-.subtitle span {
-	color: #607e00;
-}
-a.more {
-	font-size: 12px;
-	line-height: 30px;
-	color: #282828;
-	text-decoration: none;
-	background-image: url(../images/more-btn.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	text-align: center;
-	display: block;
-	width: 83px;
-	height: 38px;
-	margin-top: 10px;
-}
-a.more:hover {
-	color: #607e00;
-}
-.content-right {
-	width: 310px;
-	float: right;
-	padding-top: 7px;
-}
-.mainmenu, .contact {
-	width: 310px;
-	float: right;
-}
-.sidebar1 {
-	font-size: 18px;
-	line-height: 50px;
-	color: #FFFFFF;
-	background-image: url(../images/sidebar1.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	height: 50px;
-	padding-left: 60px;
-	margin-bottom: 15px;
-}
-.mainmenu ul {
-	margin-bottom: 15px;
-	list-style-type: none;
-}
-.mainmenu ul li {
-	background-image: url(../images/bullet.jpg);
-	background-repeat: no-repeat;
-	background-position: left center;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-left: 20px;
-}
-.mainmenu ul li a {
-	font-size: 12px;
-	font-weight: bold;
-	color: #000000;
-	text-decoration: underline;
-}
-.mainmenu ul li a:hover {
-	text-decoration: none;
-}
-.sidebar2 {
-	font-size: 18px;
-	line-height: 50px;
-	color: #FFFFFF;
-	background-image: url(../images/sidebar2.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	height: 50px;
-	padding-left: 60px;
-	margin-bottom: 10px;
-}
-.contact-detail {
-	background-color: #dcdcdc;
-	width: 280px;
-	float: right;
-	padding: 15px;
-}
-.contact-detail p {
-	margin-bottom: 10px;
-}
-.green {
-	color: #003300;
-}
+
 .footer {
 	line-height: 69px;
 	background-image: url(../images/footer.jpg);
