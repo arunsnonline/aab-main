@@ -18,16 +18,13 @@
 						<div class="topmenu">
 							<ul>
 								<li><a href="index.html"><span>Home</span></a></li>
-								<li><a href="admin/org"> <span>View
-											Organizations</span>
-								</a></li>
-								<li><a href="admin/acc"> <span>View Accounts</span>
-								</a></li>
-								<li><a href="#"><span>View Masters</span></a>
+								<li><a href="admin/org"> <span>Organizations</span></a></li>
+								<li><a href="admin/acc"> <span>Accounts</span></a></li>
+								<li><a href="#"><span>Masters</span></a>
 									<ul>
-										<li><a href="#">Country</a></li>
-										<li><a href="#">State</a></li>
-										<li><a href="#">City</a></li>
+										<li><a href="admin/country">Country</a></li>
+										<li><a href="admin/state">State</a></li>
+										<li><a href="admin/city">City</a></li>
 									</ul></li> 
 								<li><a href="#"><span>Contact</span></a></li>
 								<li><a href="#"><span>Resources</span></a></li>

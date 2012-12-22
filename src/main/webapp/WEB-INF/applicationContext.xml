@@ -13,10 +13,16 @@
 	
 	<bean id="organizationService" class="com.adsandboards.web.service.impl.OrganizationServiceImpl"/>
 	
+	<bean id="countryService" class="com.adsandboards.web.service.impl.CountryServiceImpl"/>
+	
 	<bean id="accountService" class="com.adsandboards.web.service.impl.AccountServiceImpl"/>
 	
 	<!-- Dao -->
 	<bean id="organizationDao" class="com.adsandboards.web.dao.impl.OrganizationDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="countryDao" class="com.adsandboards.web.dao.impl.CountryDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
