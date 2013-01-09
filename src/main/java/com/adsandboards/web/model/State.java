@@ -41,6 +41,9 @@ public class State extends BaseModel {
 	@ManyToOne
 	@JoinColumn(name = "countryId")
 	public Country getCountry() {
+		if (country == null) {
+			country = new Country();
+		}
 		return country;
 	}
 

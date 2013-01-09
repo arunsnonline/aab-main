@@ -9,5 +9,7 @@
                 <mapping class="com.adsandboards.web.model.Country"/>
                 <mapping class="com.adsandboards.web.model.Organization"/>
                 <mapping class="com.adsandboards.web.model.Account"/>
+                <mapping class="com.adsandboards.web.model.State"/>
+                <mapping class="com.adsandboards.web.model.City"/>
             </session-factory>
         </hibernate-configuration>

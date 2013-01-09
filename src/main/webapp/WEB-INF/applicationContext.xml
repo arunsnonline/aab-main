@@ -17,6 +17,10 @@
 	
 	<bean id="accountService" class="com.adsandboards.web.service.impl.AccountServiceImpl"/>
 	
+	<bean id="stateService" class="com.adsandboards.web.service.impl.StateServiceImpl"/>
+	
+	<bean id="cityService" class="com.adsandboards.web.service.impl.CityServiceImpl"/>
+	
 	<!-- Dao -->
 	<bean id="organizationDao" class="com.adsandboards.web.dao.impl.OrganizationDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
@@ -27,6 +31,14 @@
 	</bean>
 	
 	<bean id="accountDao" class="com.adsandboards.web.dao.impl.AccountDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="stateDao" class="com.adsandboards.web.dao.impl.StateDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="cityDao" class="com.adsandboards.web.dao.impl.CityDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
