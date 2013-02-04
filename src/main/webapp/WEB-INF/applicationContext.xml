@@ -9,7 +9,7 @@
     <context:annotation-config/>
     
 	<!-- Service -->
-	<bean id="loginService" class="com.adsandboards.web.service.impl.CalculatorImpl"/>
+	<bean id="userService" class="com.adsandboards.web.service.impl.UserServiceImpl"/>
 	
 	<bean id="organizationService" class="com.adsandboards.web.service.impl.OrganizationServiceImpl"/>
 	
@@ -41,6 +41,12 @@
 	<bean id="cityDao" class="com.adsandboards.web.dao.impl.CityDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	
+	<bean id="userDao" class="com.adsandboards.web.dao.impl.UserDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
 	
 	<!-- database related -->
 	

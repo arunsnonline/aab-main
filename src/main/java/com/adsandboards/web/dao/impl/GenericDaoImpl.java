@@ -22,6 +22,7 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> getAll() {
 		List<T> list = this.hibernateTemplate.loadAll(this.persistentClass);

@@ -2,7 +2,6 @@ package com.adsandboards.web.model;
 
 import java.util.List;
 
-import javax.management.relation.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -70,7 +69,7 @@ public class User extends BaseModel {
 	}
 
 	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "userId") }, inverseJoinColumns = { @JoinColumn(name = "roleId") })
+	@JoinTable(name = "tblUserRole", joinColumns = { @JoinColumn(name = "userId") }, inverseJoinColumns = { @JoinColumn(name = "roleId") })
 	public List<Role> getRoleList() {
 		return roleList;
 	}

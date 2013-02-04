@@ -29,6 +29,13 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	height: 81px;
 	float: left;
 }
+
+.quickurl {
+	text-align: right;
+	width: 200px;
+	height: 81px;
+	float: left;
+}
 .header-top h1 {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 55px;

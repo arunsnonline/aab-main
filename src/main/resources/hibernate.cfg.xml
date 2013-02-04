@@ -11,5 +11,7 @@
                 <mapping class="com.adsandboards.web.model.Account"/>
                 <mapping class="com.adsandboards.web.model.State"/>
                 <mapping class="com.adsandboards.web.model.City"/>
+                <mapping class="com.adsandboards.web.model.User"/>
+                <mapping class="com.adsandboards.web.model.Role"/>
             </session-factory>
         </hibernate-configuration>
