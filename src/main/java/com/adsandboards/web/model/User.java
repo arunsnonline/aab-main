@@ -20,44 +20,44 @@ public class User extends BaseModel {
 	private String address;
 	private String city;
 	private String country;
-	private String postal_code;
+	private String postalCode;
 	private String province;
 	private String email;
-	private String first_name;
-	private String last_name;
-	private String password_hint;
+	private String firstName;
+	private String lastName;
+	private String passwordHint;
 	private String website;
-	private boolean account_expired;
-	private boolean account_locked;
-	private boolean credentials_expired;
-	private boolean account_enabled;
+	private boolean accountExpired;
+	private boolean accountLocked;
+	private boolean credentialsExpired;
+	private boolean accountEnabled;
 	private int version;
 	private Organization organization;
 	private Account account;
 	private List<Role> roleList;
 
 	public User(String username, String password, String address, String city,
-			String country, String postal_code, String province, String email,
-			String first_name, String last_name, String password_hint,
-			String website, boolean account_expired, boolean account_locked,
-			boolean credentials_expired, boolean account_enabled, int version,
+			String country, String postalCode, String province, String email,
+			String firstName, String lastName, String passwordHint,
+			String website, boolean accountExpired, boolean accountLocked,
+			boolean credentialsExpired, boolean accountEnabled, int version,
 			Organization organization, Account account, List<Role> roleList) {
 		this.username = username;
 		this.password = password;
 		this.address = address;
 		this.city = city;
 		this.country = country;
-		this.postal_code = postal_code;
+		this.postalCode = postalCode;
 		this.province = province;
 		this.email = email;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.password_hint = password_hint;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.passwordHint = passwordHint;
 		this.website = website;
-		this.account_expired = account_expired;
-		this.account_locked = account_locked;
-		this.credentials_expired = credentials_expired;
-		this.account_enabled = account_enabled;
+		this.accountExpired = accountExpired;
+		this.accountLocked = accountLocked;
+		this.credentialsExpired = credentialsExpired;
+		this.accountEnabled = accountEnabled;
 		this.version = version;
 		this.organization = organization;
 		this.account = account;
@@ -137,12 +137,12 @@ public class User extends BaseModel {
 	}
 
 	@Column(length = 15)
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getProvince() {
@@ -161,28 +161,28 @@ public class User extends BaseModel {
 		this.email = email;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getPassword_hint() {
-		return password_hint;
+	public String getPasswordHint() {
+		return passwordHint;
 	}
 
-	public void setPassword_hint(String password_hint) {
-		this.password_hint = password_hint;
+	public void setPasswordHint(String passwordHint) {
+		this.passwordHint = passwordHint;
 	}
 
 	public String getWebsite() {
@@ -193,36 +193,36 @@ public class User extends BaseModel {
 		this.website = website;
 	}
 
-	public boolean isAccount_expired() {
-		return account_expired;
+	public boolean isAccountExpired() {
+		return accountExpired;
 	}
 
-	public void setAccount_expired(boolean account_expired) {
-		this.account_expired = account_expired;
+	public void setAccountExpired(boolean accountExpired) {
+		this.accountExpired = accountExpired;
 	}
 
-	public boolean isAccount_locked() {
-		return account_locked;
+	public boolean isAccountLocked() {
+		return accountLocked;
 	}
 
-	public void setAccount_locked(boolean account_locked) {
-		this.account_locked = account_locked;
+	public void setAccountLocked(boolean accountLocked) {
+		this.accountLocked = accountLocked;
 	}
 
-	public boolean isCredentials_expired() {
-		return credentials_expired;
+	public boolean isCredentialsExpired() {
+		return credentialsExpired;
 	}
 
-	public void setCredentials_expired(boolean credentials_expired) {
-		this.credentials_expired = credentials_expired;
+	public void setCredentialsExpired(boolean credentialsExpired) {
+		this.credentialsExpired = credentialsExpired;
 	}
 
-	public boolean isAccount_enabled() {
-		return account_enabled;
+	public boolean isAccountEnabled() {
+		return accountEnabled;
 	}
 
-	public void setAccount_enabled(boolean account_enabled) {
-		this.account_enabled = account_enabled;
+	public void setAccountEnabled(boolean accountEnabled) {
+		this.accountEnabled = accountEnabled;
 	}
 
 	public int getVersion() {

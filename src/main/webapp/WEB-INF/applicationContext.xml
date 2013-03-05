@@ -2,49 +2,72 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
  	
     <context:annotation-config/>
     
-	<!-- Service -->
-	<bean id="userService" class="com.adsandboards.web.service.impl.UserServiceImpl"/>
+    <!-- <context:component-scan base-package="com.adsandboards.web.dao.impl" />
+    <context:component-scan base-package="com.adsandboards.web.dao.service" /> -->
+    
+    
+    <tx:annotation-driven />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+		
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceXmlLocation" value="classpath:./META-INF/persistence.xml"/>
+        <property name="persistenceUnitName" value="JPAService"/>
+    	<property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        </property>
+        <property name="jpaProperties">
+                <!-- set extra properties here, e.g. for Hibernate: -->
+            <props>
+              <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+              <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+              <prop key="hibernate.cache.use_second_level_cache">true</prop>
+              <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    
+    
 	
+	<!-- Service -->
 	<bean id="organizationService" class="com.adsandboards.web.service.impl.OrganizationServiceImpl"/>
 	
-	<bean id="countryService" class="com.adsandboards.web.service.impl.CountryServiceImpl"/>
+    <bean id="userService" class="com.adsandboards.web.service.impl.UserServiceImpl"/>
+    
+    <bean id="countryService" class="com.adsandboards.web.service.impl.CountryServiceImpl"/>
 	
 	<bean id="accountService" class="com.adsandboards.web.service.impl.AccountServiceImpl"/>
 	
 	<bean id="stateService" class="com.adsandboards.web.service.impl.StateServiceImpl"/>
 	
-	<bean id="cityService" class="com.adsandboards.web.service.impl.CityServiceImpl"/>
+	<bean id="cityService" class="com.adsandboards.web.service.impl.CityServiceImpl"/> 
+	
 	
 	<!-- Dao -->
-	<bean id="organizationDao" class="com.adsandboards.web.dao.impl.OrganizationDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="organizationDao" class="com.adsandboards.web.dao.impl.OrganizationDaoImpl"/>
 	
-	<bean id="countryDao" class="com.adsandboards.web.dao.impl.CountryDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="countryDao" class="com.adsandboards.web.dao.impl.CountryDaoImpl"/>
 	
-	<bean id="accountDao" class="com.adsandboards.web.dao.impl.AccountDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="accountDao" class="com.adsandboards.web.dao.impl.AccountDaoImpl"/>
 	
-	<bean id="stateDao" class="com.adsandboards.web.dao.impl.StateDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="stateDao" class="com.adsandboards.web.dao.impl.StateDaoImpl"/>
 	
-	<bean id="cityDao" class="com.adsandboards.web.dao.impl.CityDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="cityDao" class="com.adsandboards.web.dao.impl.CityDaoImpl"/>
 	
-	<bean id="userDao" class="com.adsandboards.web.dao.impl.UserDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	<bean id="userDao" class="com.adsandboards.web.dao.impl.UserDaoImpl"/>
 	
 	
 	
@@ -57,22 +80,6 @@
             </list>
         </property>
     </bean>
-    
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
-        <property name="hibernateProperties">
-            <value>
-                hibernate.dialect=${hibernate.dialect}
-                hibernate.query.substitutions=true 'Y', false 'N'
-                hibernate.cache.use_second_level_cache=true
-                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
-            </value>
-            <!-- Turn batching off for better error messages under PostgreSQL -->
-            <!-- hibernate.jdbc.batch_size=0 -->
-        </property>
-    </bean>
-	
 	
 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>

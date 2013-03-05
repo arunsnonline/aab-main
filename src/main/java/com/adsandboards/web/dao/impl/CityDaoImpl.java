@@ -17,10 +17,9 @@ public class CityDaoImpl extends GenericDaoImpl<City, Long> implements CityDao {
 	@Override
 	public City save(City city) {
 		logger.debug("******************:" + city.getState().getId());
-		State state = hibernateTemplate.get(State.class, city.getState()
-				.getId());
+		State state = entityManager.find(State.class, city.getState().getId());
 		city.setState(state);
-		return hibernateTemplate.merge(city);
+		return entityManager.merge(city);
 	}
 
 }

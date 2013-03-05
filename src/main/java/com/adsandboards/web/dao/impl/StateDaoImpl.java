@@ -18,10 +18,10 @@ public class StateDaoImpl extends GenericDaoImpl<State, Long> implements
 	@Override
 	public State save(State state) {
 		logger.debug("******************:" + state.getCountry().getId());
-		Country country = hibernateTemplate.get(Country.class, state
-				.getCountry().getId());
+		Country country = entityManager.find(Country.class, state.getCountry()
+				.getId());
 		state.setCountry(country);
-		return hibernateTemplate.merge(state);
+		return entityManager.merge(state);
 	}
 
 }

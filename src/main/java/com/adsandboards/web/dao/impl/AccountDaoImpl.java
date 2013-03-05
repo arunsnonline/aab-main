@@ -18,10 +18,10 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements
 	@Override
 	public Account save(Account account) {
 		logger.debug("******************:" + account.getOrganization().getId());
-		Organization organization = hibernateTemplate.get(Organization.class,
+		Organization organization = entityManager.find(Organization.class,
 				account.getOrganization().getId());
 		account.setOrganization(organization);
-		return hibernateTemplate.merge(account);
+		return entityManager.merge(account);
 	}
 
 }
