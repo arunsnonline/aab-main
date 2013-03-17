@@ -26,7 +26,7 @@
 										<li><a href="admin/state">State</a></li>
 										<li><a href="admin/city">City</a></li>
 									</ul></li> 
-								<li><a href="#"><span>Contact</span></a></li>
+								<li><a href="admin/adboard"><span>Adboard</span></a></li>
 								<li><a href="#"><span>Resources</span></a></li>
 							</ul>
 						</div>

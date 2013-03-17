@@ -1,0 +1,104 @@
+/*****
+*Creating master stylesheet
+******/
+body {
+	font-family:helvetica, arial;
+	font-size:12px;
+	font-style:normal;
+	font-weight:400;
+	color: #222222;	
+}
+
+h1{
+	color: #222222;
+	font-size:19px;
+	font-weight:bold;
+    font-family: arial, tahoma, helvetica, sans-serif;
+}
+.mainHeader {		
+	margin-left: 160px;
+    width: 150px;
+	font-size: 25px;
+    font-weight: bold;
+}
+.gridContainer {
+	margin-left: 150px;
+    width: 80%;
+	background: none repeat scroll 0 0 #FFFFFF;
+	padding-bottom: 20px;
+	padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+	 margin-top: 30px;
+}
+
+#gridHeader {
+	padding-left: 3px;
+    position: absolute;
+    width: 200px;
+    z-index: 10000;
+	margin-top: 5px;    
+}
+#mainGrid.dataTable tr.odd {
+	background-color: #FFFFFF;
+}
+#mainGrid.dataTable tr.even {
+	background-color: #F0F0F0;
+}
+#mainGrid_wrapper .fg-toolbar  {
+	height:30px;
+	margin-bottom:12px;
+}
+.headerRow th {
+	background-image: -moz-linear-gradient(center top , #EEEDF2 0%, #D1D4D9 100%) ;
+	height :50px;	
+	color: #222222;
+	font-size:12px;
+	border: 1px solid #c1c1c1;
+}
+.headerRow th div.DataTables_sort_wrapper {
+	padding-bottom: 11px;
+}
+#mainGrid td {
+	border: 1px solid #c1c1c1;	
+}
+#mainGrid.dataTable tr {
+	height:35px;
+}
+#mainGrid, #mainGrid th{
+	font-size :12px;
+}
+#mainGrid td:nth-child(2) {
+	font-weight:bold;
+}
+#mainGrid_filter input {
+	color:#878787;
+	height: 30px;
+    padding: 3px; 
+    width:180px;	
+}
+.row_selected {
+	
+}
+.tableFooter {
+	background-color: #A0D5DD;
+    padding-top: 5px;
+    height: 47px;    
+    width: 100%;	
+}
+.arrBtm {   
+    float: left;
+    height: 20px;
+    margin-left: 120px;
+    margin-top: -2px;
+    width: 32px;
+}
+.floatLeft {
+	float:left;
+}
+.floatRight {
+	float:right;
+}
+.clear {
+	clear:both;
+}

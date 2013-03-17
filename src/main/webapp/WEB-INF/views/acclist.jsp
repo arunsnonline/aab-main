@@ -1,40 +1,64 @@
 <%@ include file="/WEB-INF/include.jsp"%>
-<html>
-<head>
-<title>Ads & Boards</title>
-<link href='<c:url value="/css/home.css"/>' rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
-        $(document).ready(function(){
-        	
-        });
-        </script>
-</head>
-<body>
-	<div id="header">ADS & BOARDS</div>
-	<br>
-	<a href='<c:url value="/admin"/>'>Admin Home</a>
-	<a href='<c:url value="/admin/acc/new"/>'>New</a>
-	<br>
-	<div id="content">
-	<form:form method="post">
-		<display:table name="accountList" defaultsort="1"
-			defaultorder="ascending" pagesize="10" requestURI="">
-			<display:column title="<input type='checkbox' name='selectall' onClick='selectAll()' />">
-          			<input type="checkbox" />
-            </display:column>
-			<display:column property="id" title="ID" />
-			<display:column property="accountName" title="NAME" />
-			<display:column property="phone" title="PHONE" />
-			<display:column property="fax" title="FAX" />
-			<display:column property="email" title="E-MAIL" />
-			<display:column property="websiteUrl" title="WEBSITE" />
-			<display:column property="address" title="ADDRESS" />
-			<display:column property="contactPerson" title="CONTACT PERSON" />
-			<display:column property="contactPersonMobile" title="MOBILE" />
-			<display:column href="acc/edit.htm" paramId="id" paramProperty="id">Edit</display:column>
-		</display:table>
-	</form:form>
-	</div>
-</body>
-</html>
+<HTML>
+<HEAD>
+<TITLE> AdBoard </TITLE>
+
+<script src='<spring:url value="/js/jquery-1.9.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/jquery-migrate-1.1.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/DataTables-1.9.4/media/js/jquery.dataTables.min.js" htmlEscape="true"/>'></script>
+
+
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/demo_table_jui.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/css/ui-base/jquery-ui-1.8.11.custom.css" htmlEscape="true"/>'/>
+
+<link rel="stylesheet" href='<spring:url value="/css/grid.css" htmlEscape="true"/>'/>
+<script src='<spring:url value="/js/accgrid.js" htmlEscape="true"/>'></script>
+
+<style>
+	td{
+		position:relative;
+	}
+</style>
+</HEAD>
+
+<BODY style= "background-color: #DEDEDE;margin: 0;">
+	
+		<div class="mainContainer">
+			<div  style="background-color: #a0d5dd; width: 100%; height: 315px;padding-top: 40px;">
+			<div class="mainHeader">Account</div>
+			<a href='<c:url value="/admin"/>'>Admin Home</a>
+			<a href='<c:url value="/admin/acc/new"/>'>New</a>
+			<div>
+				<div class="gridContainer">
+					<h1 id="gridHeader"></h1>
+					<table id="mainGrid" border="1">
+						<thead>
+							<tr class="headerRow">
+								<th align="left" width="100">Id</th>
+								<th align="left" width="100">Name</th>
+								<th align="left" width="100">Phone</th>
+								<th align="left" width="100">Fax</th>
+								<th align="left" width="100">E-Mail</th>
+								<th align="left" width="100">Website</th>
+								<th align="left" width="100">Address</th>
+								<th align="left" width="100">Contact Person</th>
+								<th align="left" width="100">Mobile</th>
+			
+							</tr>
+					</thead>
+					<tbody></tbody>
+					</table>				
+			</div>
+			<div class="tableFooter"><div style="margin-left: 200px;margin-top: 10px;">&copy; Copyright 2013</div></div>				
+			</div>
+			</div>
+		</div>
+		<!-- 	<div id="busyicon">
+				<img src="images/loading.gif"/>
+			</div>
+		 -->
+
+</BODY>
+</HTML>

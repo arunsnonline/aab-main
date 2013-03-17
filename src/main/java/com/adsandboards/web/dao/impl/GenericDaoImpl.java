@@ -44,4 +44,23 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 		this.entityManager.remove(this.get(id));
 	}
 
+	@Override
+	public Long getTotalCount() {
+		return (Long) this.entityManager
+				.createQuery(
+						"select count(*) from "
+								+ this.persistentClass.getName() + " o")
+				.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getAll(int start, int length) {
+		List<T> list = this.entityManager
+				.createQuery(
+						"select p from " + persistentClass.getName() + " p")
+				.setFirstResult(start).setMaxResults(length).getResultList();
+		return list;
+	}
+
 }

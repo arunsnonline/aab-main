@@ -1,21 +1,57 @@
 <%@ include file="/WEB-INF/include.jsp"%>
-<html>
-<head>
-	<title>Ads & Boards</title>
-	<link href='<c:url value="/css/home.css"/>' rel="stylesheet" type="text/css">
-</head>
-<body>
-	<div id="header">ADS & BOARDS</div><br>
-	<a href='<c:url value="/admin"/>'>Admin Home</a>
-	<a href='<c:url value="/admin/org/new"/>'>New</a>
-	<br>
-	<div id="content">
-		<display:table name="organizationList" defaultsort="1"
-			defaultorder="ascending" pagesize="10" requestURI="">
-			<display:column property="id" title="ID" />
-			<display:column property="organizationName" title="NAME" />
-			<display:column href="org/edit.htm" paramId="id" paramProperty="id">Edit</display:column>
-		</display:table>
-	</div>
-</body>
-</html>
+<HTML>
+<HEAD>
+<TITLE> AdBoard </TITLE>
+
+<script src='<spring:url value="/js/jquery-1.9.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/jquery-migrate-1.1.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/DataTables-1.9.4/media/js/jquery.dataTables.min.js" htmlEscape="true"/>'></script>
+
+
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/demo_table_jui.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/css/ui-base/jquery-ui-1.8.11.custom.css" htmlEscape="true"/>'/>
+
+<link rel="stylesheet" href='<spring:url value="/css/grid.css" htmlEscape="true"/>'/>
+<script src='<spring:url value="/js/orggrid.js" htmlEscape="true"/>'></script>
+
+<style>
+	td{
+		position:relative;
+	}
+</style>
+</HEAD>
+
+<BODY style= "background-color: #DEDEDE;margin: 0;">
+	
+		<div class="mainContainer">
+			<div  style="background-color: #a0d5dd; width: 100%; height: 315px;padding-top: 40px;">
+			<div class="mainHeader">Organization</div>
+			<a href='<c:url value="/admin"/>'>Admin Home</a>
+			<a href='<c:url value="/admin/org/new"/>'>New</a>
+			<div>
+				<div class="gridContainer">
+					<h1 id="gridHeader"></h1>
+					<table id="mainGrid" border="1">
+						<thead>
+							<tr class="headerRow">
+								<th align="left" width="200"> ID</th>
+								<th align="left" width="200">Name</th>
+							</tr>
+					</thead>
+					<tbody></tbody>
+					</table>				
+			</div>
+			<div class="tableFooter"><div style="margin-left: 200px;margin-top: 10px;">&copy; Copyright 2013</div></div>				
+			</div>
+			</div>
+		</div>
+		<!-- 	<div id="busyicon">
+				<img src="images/loading.gif"/>
+			</div>
+		 -->
+<!--		<div class="ratingPanel"><div class="progressWrapper"><div class="progressBar"><span class="progressValue">49</span><span class="avgValue"></span><span class="startLine"></span></div></div></div>-->
+
+</BODY>
+</HTML>

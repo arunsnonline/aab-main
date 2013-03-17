@@ -24,11 +24,6 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 		password = MD5Convertor.convertToMD5(password);
 		List<User> userList = QueryUtil.listAndCast(this.entityManager
 				.createQuery("select u from " + User.class.getName() + " u"));
-		/*
-		 * "select u from User u where u.username=:username and u.password=:password"
-		 * ) .setParameter("username", userName) .setParameter("password",
-		 * password));
-		 */
 		logger.debug("***********user list******:" + userList.size());
 		return userList.size() > 0 ? true : false;
 	}

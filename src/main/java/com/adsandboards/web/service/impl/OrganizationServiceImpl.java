@@ -13,4 +13,5 @@ public class OrganizationServiceImpl extends
 	public OrganizationServiceImpl(OrganizationDao organizationDao) {
 		super(organizationDao);
 	}
+
 }

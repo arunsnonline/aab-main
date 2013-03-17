@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.adsandboards.web.model.DisplayGrid;
 import com.adsandboards.web.service.GenericService;
 
 public abstract class GenericController<T, PK extends Serializable> {
@@ -24,9 +25,20 @@ public abstract class GenericController<T, PK extends Serializable> {
 	protected abstract T getNewCommand();
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView viewList() {
-		List<T> list = genericService.getAll();
-		return new ModelAndView(getListPageName(), getListCommandName(), list);
+	public String viewList() {
+		return getListPageName();
+	}
+
+	@RequestMapping(value = "/list.htm", method = RequestMethod.GET)
+	@ResponseBody
+	public DisplayGrid<T> login(
+			@RequestParam(value = "iDisplayStart") int start,
+			@RequestParam(value = "iDisplayLength") int length) {
+		List<T> list = this.genericService.getAll(start, length);
+		Long totalCount = this.genericService.getTotalCount();
+		DisplayGrid<T> displayGrid = new DisplayGrid<T>(totalCount, totalCount,
+				list);
+		return displayGrid;
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)

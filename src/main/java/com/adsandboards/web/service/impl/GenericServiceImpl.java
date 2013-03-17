@@ -34,4 +34,14 @@ public class GenericServiceImpl<T, PK extends Serializable> implements
 	public void delete(PK id) {
 		this.genericDao.delete(id);
 	}
+
+	@Override
+	public List<T> getAll(int start, int length) {
+		return this.genericDao.getAll(start, length);
+	}
+
+	@Override
+	public Long getTotalCount() {
+		return this.genericDao.getTotalCount();
+	}
 }
