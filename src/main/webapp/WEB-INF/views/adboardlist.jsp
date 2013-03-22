@@ -4,18 +4,18 @@
 <HEAD>
 <TITLE> AdBoard </TITLE>
 
-<script src="js/DataTables-1.9.4/media/js/jquery.js"></script>
-<script src="js/DataTables-1.9.4/media/js/jquery-ui.js"></script>
-<script src="js/DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
-<script src="js/DataTables-1.9.4/media/js/dataTables.scroller.js"></script>
+<script src='<spring:url value="/js/jquery-1.9.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/jquery-migrate-1.1.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/DataTables-1.9.4/media/js/jquery.dataTables.min.js" htmlEscape="true"/>'></script>
 
-<link rel="stylesheet" href="js/DataTables-1.9.4/media/css/jquery.dataTables.css"/>
-<link rel="stylesheet" href="js/DataTables-1.9.4/media/css/demo_table_jui.css"/>
-<link rel="stylesheet" href="js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css"/>
-<link rel="stylesheet" href="css/ui-base/jquery-ui-1.8.11.custom.css"/>
 
-<link rel="stylesheet" href="css/grid.css"/>
-<script src="js/orggrid.js"></script>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/demo_table_jui.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css" htmlEscape="true"/>'/>
+<link rel="stylesheet" href='<spring:url value="/css/ui-base/jquery-ui-1.8.11.custom.css" htmlEscape="true"/>'/>
+
+<link rel="stylesheet" href='<spring:url value="/css/grid.css" htmlEscape="true"/>'/>
+<script src='<spring:url value="/js/adboardgrid.js" htmlEscape="true"/>'></script>
 <style>
 	td{
 		position:relative;
@@ -27,15 +27,21 @@
 	
 		<div class="mainContainer">
 			<div  style="background-color: #a0d5dd; width: 100%; height: 315px;padding-top: 40px;">
-			<div class="mainHeader">Organization</div>
+			<div class="mainHeader">Ad-Board</div>
+			<a href='<c:url value="/admin"/>'>Admin Home</a>
+			<a href='<c:url value="/admin/adboard/new"/>'>New</a>
 			<div>
 				<div class="gridContainer">
-					<h1 id="pgridHeader">List</h1>
-					<table id="predictiveGrid" border="1">
+					<h1 id="gridHeader"></h1>
+					<table id="mainGrid" border="1">
 						<thead>
 							<tr class="headerRow">
-								<th align="left" width="200"> ID</th>
-								<th align="left" width="200">Name</th>
+								<th align="left" width="100">Id</th>
+								<th align="left" width="100">Street</th>
+								<th align="left" width="100">Detailed Location</th>
+								<th align="left" width="100">Board Type</th>
+								<th align="left" width="100">Size</th>
+								
 							</tr>
 					</thead>
 					<tbody></tbody>

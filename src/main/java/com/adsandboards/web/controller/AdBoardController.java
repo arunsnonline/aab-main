@@ -1,9 +1,8 @@
-/*package com.adsandboards.web.controller;
+package com.adsandboards.web.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.adsandboards.web.model.AdBoard;
@@ -18,11 +17,6 @@ public class AdBoardController extends GenericController<AdBoard, Long> {
 	@Autowired
 	public AdBoardController(AdBoardService adBoardService) {
 		super(adBoardService);
-	}
-
-	@Override
-	protected void setAdditionalModelsForForm(ModelMap model) {
-		// model.put("boardTypeList", organizationService.getAll());
 	}
 
 	@Override
@@ -50,4 +44,4 @@ public class AdBoardController extends GenericController<AdBoard, Long> {
 		return "/admin/adboard";
 	}
 
-}*/
+}

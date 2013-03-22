@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.adsandboards.web.dao.GenericDao;
 
+@Transactional
 public class GenericDaoImpl<T, PK extends Serializable> implements
 		GenericDao<T, PK> {
 
@@ -36,7 +39,10 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 
 	@Override
 	public T save(T object) {
-		return (T) this.entityManager.merge(object);
+		T t = this.entityManager.merge(object);
+		this.entityManager.flush();
+		return t;
+
 	}
 
 	@Override
