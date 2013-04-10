@@ -13,5 +13,6 @@
          <class>com.adsandboards.web.model.City</class>
          <class>com.adsandboards.web.model.User</class>
          <class>com.adsandboards.web.model.Role</class>
+         <class>com.adsandboards.web.model.BoardType</class>
     </persistence-unit>
 </persistence>

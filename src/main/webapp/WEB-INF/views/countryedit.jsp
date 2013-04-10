@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Ads & Boards</title>
-<link href='<c:url value="/css/home.css"/>' rel="stylesheet" type="text/css">
+<link href='<spring:url value="/css/home.css" htmlEscape="true"/>' rel="stylesheet" type="text/css">
 </head>
 <body>
 	

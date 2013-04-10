@@ -55,7 +55,9 @@
 	
 	<bean id="cityService" class="com.adsandboards.web.service.impl.CityServiceImpl"/> 
   
-    <bean id="adBoardService" class="com.adsandboards.web.service.impl.AdBoardServiceImpl"/> 
+    <bean id="adBoardService" class="com.adsandboards.web.service.impl.AdBoardServiceImpl"/>
+    
+    <bean id="boardTypeService" class="com.adsandboards.web.service.impl.BoardTypeServiceImpl"/> 
 	
 	
 	<!-- Dao -->
@@ -72,6 +74,8 @@
 	<bean id="userDao" class="com.adsandboards.web.dao.impl.UserDaoImpl"/>
   
     <bean id="adBoardDao" class="com.adsandboards.web.dao.impl.AdBoardDaoImpl"/>
+    
+    <bean id="boardTypeDao" class="com.adsandboards.web.dao.impl.BoardTypeDaoImpl"/>
 	
 	
 	
