@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.adsandboards.web.model.AdBoard;
 import com.adsandboards.web.service.AdBoardService;
 import com.adsandboards.web.service.BoardTypeService;
+import com.adsandboards.web.service.CityService;
 
 @Controller
 @RequestMapping(value = "/admin/adboard")
@@ -20,6 +21,9 @@ public class AdBoardController extends GenericController<AdBoard, Long> {
 	private BoardTypeService boardTypeService;
 
 	@Autowired
+	private CityService cityService;
+
+	@Autowired
 	public AdBoardController(AdBoardService adBoardService) {
 		super(adBoardService);
 	}
@@ -27,6 +31,7 @@ public class AdBoardController extends GenericController<AdBoard, Long> {
 	@Override
 	protected void setAdditionalModelsForForm(ModelMap model) {
 		model.put("boardTypeList", boardTypeService.getAll());
+		model.put("cityList", cityService.getAll());
 	}
 
 	@Override

@@ -23,6 +23,9 @@
 
 		<table>
 				<form:hidden path="id" />
+				<form:hidden id="lathidden" path="locationLatitude" />
+				<form:hidden id="lnghidden" path="locationLongitude" />
+				
 			<tr>
 				<td><form:label path="street">Street</form:label></td>
 				<td><form:input path="street" /></td>
@@ -31,6 +34,14 @@
 				<td><form:label path="detailedLocation">Detailed Location</form:label></td>
 				<td><form:textarea id="detailedLocation" path="detailedLocation" /></td>
 				<td><input id="geocode" type="button" value="Geo code" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="locationLatitude">Latitude</form:label></td>
+				<td id="lat">${modelObject.locationLatitude}</td>
+			</tr>
+			<tr>
+				<td><form:label path="locationLongitude">Longitude</form:label></td>
+				<td id="lng">${modelObject.locationLongitude}</td>
 			</tr>
 			<tr>
 				<td><form:label path="contractDays">Contract Days</form:label></td>
@@ -51,6 +62,10 @@
 			<tr>
 				<td><form:label path="uom">Uom</form:label></td>
 				<td><form:input path="uom" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="city.id">City</form:label></td>
+				<td><form:select path="city.id" items="${cityList}" itemValue="id" itemLabel="cityName"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="boardType.id">Board Type</form:label></td>

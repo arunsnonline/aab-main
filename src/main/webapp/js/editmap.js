@@ -1,6 +1,7 @@
 $(document).ready(function() {	
 	    var geocoder;
 		var map;
+		var marker;
 		var initialLocation;
 		var india = new google.maps.LatLng(22.00, 77.00);
 		var browserSupportFlag =  new Boolean();
@@ -56,18 +57,35 @@ $(document).ready(function() {
 		
       
       function codeAddress() {
+	   if(marker!=null){
+    		  marker.setMap(null);
+    	  }
     	    var address = $("#detailedLocation").val();
-			alert(address);
+			//alert(address);
     	    geocoder.geocode( { 'address': address}, function(results, status) {
     	      if (status == google.maps.GeocoderStatus.OK) {
     	        map.setCenter(results[0].geometry.location);
-    	        var marker = new google.maps.Marker({
+    	        	marker = new google.maps.Marker({
     	            map: map,
+    	            draggable:true,
     	            position: results[0].geometry.location
     	        });
+    	        google.maps.event.addListener(marker, 'dragend', dragEnd);
+
     	      } else {
     	        alert("Geocode was not successful for the following reason: " + status);
     	      }
     	    });
 		}
+      
+      function dragEnd() {
+
+    	  var latLng = marker.getPosition();
+    	  var lat = latLng.lat();
+    	  var lng = latLng.lng();
+    	  $("#lat").html(lat);
+    	  $("#lng").html(lng);
+    	  $("#lathidden").val(lat);
+    	  $("#lnghidden").val(lng);
+    	}
 });
