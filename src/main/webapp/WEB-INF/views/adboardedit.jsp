@@ -4,9 +4,15 @@
 <title>Ads & Boards</title>
 <link href='<spring:url value="/css/home.css" htmlEscape="true"/>' rel="stylesheet" type="text/css">
 <link href='<spring:url value="/css/adboardedit.css" htmlEscape="true"/>' rel="stylesheet" type="text/css">
+<link href='<spring:url value="/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" htmlEscape="true"/>' rel="stylesheet" type="text/css">
 <script src='<spring:url value="/js/jquery-1.9.0.min.js" htmlEscape="true"/>'></script>
 <script src='<spring:url value="/js/jquery-migrate-1.1.0.min.js" htmlEscape="true"/>'></script>
+<script src='<spring:url value="/js/jquery-ui-1.10.0.custom.min.js" htmlEscape="true"/>'></script>
 <script src='<spring:url value="/js/editmap.js" htmlEscape="true"/>'></script>
+<script type="text/javascript">
+ var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
+</script>
+<script src='<spring:url value="/js/country_state_city_search.js" htmlEscape="true"/>'></script>
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkPkRfwMoMCW8D8Mmk6OEaL3fGC_4T10Y&sensor=true">
 </script>
@@ -25,7 +31,10 @@
 				<form:hidden path="id" />
 				<form:hidden id="lathidden" path="locationLatitude" />
 				<form:hidden id="lnghidden" path="locationLongitude" />
-				
+			<tr>
+				<td>Country</td>
+				<td><input id="countrysearch" type="text"/></td>
+			</tr>
 			<tr>
 				<td><form:label path="street">Street</form:label></td>
 				<td><form:input path="street" /></td>
