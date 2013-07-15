@@ -34,6 +34,10 @@
 			<tr>
 				<td>Country</td>
 				<td><input id="countrysearch" type="text"/></td>
+				<td>State</td>
+				<td><input id="statesearch" type="text"/></td>
+				<td>City</td>
+				<td><input id="citysearch" type="text"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="street">Street</form:label></td>
