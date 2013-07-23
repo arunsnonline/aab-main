@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.adsandboards.web.model.City;
 import com.adsandboards.web.model.Country;
 import com.adsandboards.web.model.State;
+import com.adsandboards.web.service.AdBoardService;
 import com.adsandboards.web.service.CityService;
 import com.adsandboards.web.service.CountryService;
 import com.adsandboards.web.service.StateService;
@@ -26,6 +27,8 @@ public class SearchController {
 	private StateService stateService;
 	@Autowired
 	private CityService cityService;
+	@Autowired
+	private AdBoardService adBoardService;
 
 	@RequestMapping(value = "/country/list.htm", method = RequestMethod.GET)
 	@ResponseBody
@@ -55,4 +58,15 @@ public class SearchController {
 				cityNameStartsWith, stateId);
 		return cityList;
 	}
+
+	@RequestMapping(value = "/street/list.htm", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getCityListStartsWithName(
+			@RequestParam(value = "cityId") Long cityId,
+			@RequestParam(value = "street") String street) {
+		List<String> landmarkList = this.adBoardService.getSimilarLandmarkList(
+				cityId, street);
+		return landmarkList;
+	}
+
 }

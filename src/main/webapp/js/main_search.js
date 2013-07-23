@@ -1,5 +1,5 @@
 $(document).ready(function() {	
-var countryId,stateId;
+var countryId,stateId,cityId;
 
 $("#countrysearch").autocomplete({		
 		source: function (request, response) {
@@ -23,7 +23,7 @@ $("#countrysearch").autocomplete({
 		},
 		select: function( event, ui ) {
 			event.preventDefault();
-			$("#countryHiddenId").val(ui.item.value);
+			countryId=ui.item.value;
 			$(this).val(ui.item.label);
 		},
 		open: function () {
@@ -41,7 +41,7 @@ $("#statesearch").autocomplete({
 					dataType: "json",
 					data: { 
 						stateNameStartsWith: request.term,
-						countryId: $("#countryHiddenId").val()
+						countryId: countryId
 			  		},
 					success: function (data) {
 
@@ -57,7 +57,7 @@ $("#statesearch").autocomplete({
 		},
 		select: function( event, ui ) {
 			event.preventDefault();
-			$("#stateHiddenId").val(ui.item.value);
+			stateId=ui.item.value;
 			$(this).val(ui.item.label);
 		},
 		open: function () {
@@ -74,7 +74,7 @@ $("#citysearch").autocomplete({
 				dataType: "json",
 				data: { 
 					cityNameStartsWith: request.term,
-					stateId:$("#stateHiddenId").val()
+					stateId:stateId
 		  		},
 				success: function (data) {
 					response($.map( data, function( item ) {
@@ -91,6 +91,33 @@ $("#citysearch").autocomplete({
 		event.preventDefault();
 		$("#cityHiddenId").val(ui.item.value);
 		$(this).val(ui.item.label);
+	},
+	open: function () {
+			$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+	},
+	close: function () {
+			$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+	}
+});
+$("#detailedLocation").autocomplete({
+	source: function (request, response) {
+		 	$.ajax({
+				url: contextRoot+"search/street/list.htm",
+				dataType: "json",
+				data: { 
+					cityId:$("#cityHiddenId").val(),
+					street: request.term
+		  		},
+				success: function (data) {
+					response($.map( data, function( item ) {
+				return {
+					label: item ,
+					value: item
+				}
+			}));
+
+				}
+	  	});
 	},
 	open: function () {
 			$(this).removeClass("ui-corner-all").addClass("ui-corner-top");

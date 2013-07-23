@@ -60,7 +60,12 @@ $(document).ready(function() {
 	   if(marker!=null){
     		  marker.setMap(null);
     	  }
-    	    var address = $("#detailedLocation").val();
+    	    var landmark = $("#detailedLocation").val();
+    	    var street = $("#street").val();
+    	    var city = $("#citySearch").val();
+    	    var state = $("#stateSearch").val();
+    	    var country = $("#countrySearch").val();
+    	    var address=landmark+","+street+","+city+","+state+","+country;
 			//alert(address);
     	    geocoder.geocode( { 'address': address}, function(results, status) {
     	      if (status == google.maps.GeocoderStatus.OK) {

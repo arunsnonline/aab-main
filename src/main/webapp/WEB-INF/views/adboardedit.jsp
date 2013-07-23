@@ -31,16 +31,31 @@
 				<form:hidden path="id" />
 				<form:hidden id="lathidden" path="locationLatitude" />
 				<form:hidden id="lnghidden" path="locationLongitude" />
+				<form:hidden id="cityHiddenId" path="city.id" />
+				<form:hidden id="stateHiddenId" path="city.state.id" />
+				<form:hidden id="countryHiddenId" path="city.state.country.id" />
+			<c:choose>
+				<c:when test="${empty modelObject.city}">
+        			<c:set var="countryName" value=""/>
+        			<c:set var="stateName" value=""/>
+        			<c:set var="cityName" value=""/>
+    			</c:when>
+				<c:otherwise>
+        			<c:set var="countryName" value="${modelObject.city.state.country.countryName}"/>
+        			<c:set var="stateName" value="${modelObject.city.state.stateName}"/>
+        			<c:set var="cityName" value="${modelObject.city.cityName}"/>
+    			</c:otherwise>
+			</c:choose>
 			<tr>
 				<td>Country</td>
-				<td><input id="countrysearch" type="text"/></td>
+				<td><input id="countrysearch" type="text" value="${countryName}"/></td>
 				<td>State</td>
-				<td><input id="statesearch" type="text"/></td>
+				<td><input id="statesearch" type="text" value="${stateName}"/></td>
 				<td>City</td>
-				<td><input id="citysearch" type="text"/></td>
+				<td><input id="citysearch" type="text" value="${cityName}"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="street">Street</form:label></td>
+				<td><form:label id="street" path="street">Street</form:label></td>
 				<td><form:input path="street" /></td>
 			</tr>
 			<tr>
@@ -75,10 +90,6 @@
 			<tr>
 				<td><form:label path="uom">Uom</form:label></td>
 				<td><form:input path="uom" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="city.id">City</form:label></td>
-				<td><form:select path="city.id" items="${cityList}" itemValue="id" itemLabel="cityName"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="boardType.id">Board Type</form:label></td>

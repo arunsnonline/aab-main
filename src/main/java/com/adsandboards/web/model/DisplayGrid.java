@@ -2,6 +2,12 @@ package com.adsandboards.web.model;
 
 import java.util.List;
 
+/**
+ * @author arun
+ * 
+ *         Generic object for holding records for display grid
+ * @param <T>
+ */
 public class DisplayGrid<T> {
 
 	private Long iTotalRecords;

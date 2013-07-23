@@ -10,6 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.adsandboards.web.dao.GenericDao;
 
+/**
+ * 
+ * @author arun
+ * 
+ *         All generic data access methods.Handles CRUD and total record count
+ *         operations
+ * 
+ * @param <T>
+ * @param <PK>
+ */
 @Transactional
 public class GenericDaoImpl<T, PK extends Serializable> implements
 		GenericDao<T, PK> {

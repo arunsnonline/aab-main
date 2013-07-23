@@ -6,6 +6,15 @@ import java.util.List;
 import com.adsandboards.web.dao.GenericDao;
 import com.adsandboards.web.service.GenericService;
 
+/**
+ * 
+ * @author arun
+ * 
+ *         Service layer for all generic operations across all models
+ * 
+ * @param <T>
+ * @param <PK>
+ */
 public class GenericServiceImpl<T, PK extends Serializable> implements
 		GenericService<T, PK> {
 

@@ -7,6 +7,11 @@
 <script src="js/jquery-1.9.0.min.js"></script>
 <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="js/jquery-migrate-1.1.0.min.js"></script>
+<script type="text/javascript">
+ var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
+</script>
+<script src='<spring:url value="/js/main_search.js" htmlEscape="true"/>'></script>
+
 <style>
 	.toggler { width: 500px; height: 200px; }
 	#button { padding: .5em 1em; text-decoration: none; }
@@ -75,7 +80,18 @@ $( "#login" ).click(function() {
 					</div>
 					</div>
 					
-					
+					<div>
+						<ul>
+						<form:form commandName="modelObject" method="post" action="">
+							<form:hidden id="cityHiddenId" path="city.id" />
+							<li>Country <input id="countrysearch" type="text"/></li>
+							<li>State <input id="statesearch" type="text"/></li>
+							<li>City <input id="citysearch" type="text"/></li>
+							<li>Landmark(Optional) <form:input id="detailedLocation" path="detailedLocation" /></li>
+							<li><input type="submit" value="Search"/></li>
+						</form:form>
+						</ul>
+					</div>
 					
 					<div class="footer">
 						<p>

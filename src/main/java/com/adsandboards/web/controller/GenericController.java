@@ -14,6 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.adsandboards.web.model.DisplayGrid;
 import com.adsandboards.web.service.GenericService;
 
+/**
+ * 
+ * @author arun
+ * 
+ *         Controller for CRUD operations and listing of all Models.Pagination
+ *         inputs are also taken here.
+ * @param <T>
+ * @param <PK>
+ */
 public abstract class GenericController<T, PK extends Serializable> {
 
 	private GenericService<T, PK> genericService;
@@ -65,7 +74,7 @@ public abstract class GenericController<T, PK extends Serializable> {
 	}
 
 	protected void setAdditionalModelsForForm(ModelMap model) {
-		//
+		// For setting additional models to form
 	}
 
 	protected abstract String getListPageName();
