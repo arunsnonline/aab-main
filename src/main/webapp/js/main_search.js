@@ -99,7 +99,7 @@ $("#citysearch").autocomplete({
 			$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
 	}
 });
-$("#detailedLocation").autocomplete({
+$("#streetId").autocomplete({
 	source: function (request, response) {
 		 	$.ajax({
 				url: contextRoot+"search/street/list.htm",

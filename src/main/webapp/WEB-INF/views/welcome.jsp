@@ -82,12 +82,12 @@ $( "#login" ).click(function() {
 					
 					<div>
 						<ul>
-						<form:form commandName="modelObject" method="post" action="">
+						<form:form commandName="adboard" method="post" action="search/adboards">
 							<form:hidden id="cityHiddenId" path="city.id" />
 							<li>Country <input id="countrysearch" type="text"/></li>
 							<li>State <input id="statesearch" type="text"/></li>
 							<li>City <input id="citysearch" type="text"/></li>
-							<li>Landmark(Optional) <form:input id="detailedLocation" path="detailedLocation" /></li>
+							<li>Street(Optional) <form:input id="streetId" path="street" /></li>
 							<li><input type="submit" value="Search"/></li>
 						</form:form>
 						</ul>

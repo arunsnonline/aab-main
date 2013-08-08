@@ -40,7 +40,7 @@ public abstract class GenericController<T, PK extends Serializable> {
 
 	@RequestMapping(value = "/list.htm", method = RequestMethod.GET)
 	@ResponseBody
-	public DisplayGrid<T> login(
+	public DisplayGrid<T> getAll(
 			@RequestParam(value = "iDisplayStart") int start,
 			@RequestParam(value = "iDisplayLength") int length) {
 		List<T> list = this.genericService.getAll(start, length);

@@ -1,7 +1,12 @@
 package com.adsandboards.web.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.adsandboards.web.model.AdBoard;
 import com.adsandboards.web.model.City;
 import com.adsandboards.web.model.Country;
+import com.adsandboards.web.model.DisplayGrid;
 import com.adsandboards.web.model.State;
 import com.adsandboards.web.service.AdBoardService;
 import com.adsandboards.web.service.CityService;
@@ -20,6 +27,8 @@ import com.adsandboards.web.service.StateService;
 @Controller
 @RequestMapping(value = "/search")
 public class SearchController {
+
+	static final Logger logger = Logger.getLogger(SearchController.class);
 
 	@Autowired
 	private CountryService countryService;
@@ -69,4 +78,27 @@ public class SearchController {
 		return landmarkList;
 	}
 
+	@RequestMapping(value = "/adboards/list.htm", method = RequestMethod.POST)
+	@ResponseBody
+	public DisplayGrid<AdBoard> getSearchBoardResults(
+			@RequestParam(value = "iDisplayStart") int start,
+			@RequestParam(value = "iDisplayLength") int length,
+			@RequestParam(value = "adboardJson") String adboardJson)
+			throws JsonParseException, JsonMappingException, IOException {
+		logger.debug("adboard struing*****************************************************"
+				+ adboardJson);
+		AdBoard adBoard = new ObjectMapper().readValue(adboardJson,
+				AdBoard.class);
+		logger.debug("inside seach board*****************************************************"
+				+ adBoard);
+		logger.debug("start:" + start);
+		logger.debug("length:" + length);
+		logger.debug("adboard data:" + adBoard.getStreet());
+
+		List<AdBoard> list = this.adBoardService.getAll(start, length);
+		Long totalCount = this.adBoardService.getTotalCount();
+		DisplayGrid<AdBoard> displayGrid = new DisplayGrid<AdBoard>(totalCount,
+				totalCount, list);
+		return displayGrid;
+	}
 }

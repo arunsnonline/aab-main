@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/include.jsp"%>
+<%@ taglib prefix="ju" uri="/WEB-INF/tld/Json.tld"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
@@ -15,7 +16,11 @@
 <link rel="stylesheet" href='<spring:url value="/css/ui-base/jquery-ui-1.8.11.custom.css" htmlEscape="true"/>'/>
 
 <link rel="stylesheet" href='<spring:url value="/css/grid.css" htmlEscape="true"/>'/>
-<script src='<spring:url value="/js/adboardgrid.js" htmlEscape="true"/>'></script>
+<script type="text/javascript">
+ var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
+ var adboard =  ${ju:toJson(adboard)};
+</script>
+<script src='<spring:url value="/js/adboard_searchresult_grid.js" htmlEscape="true"/>'></script>
 <style>
 	td{
 		position:relative;
@@ -28,8 +33,6 @@
 		<div class="mainContainer">
 			<div  style="background-color: #a0d5dd; width: 100%; height: 315px;padding-top: 40px;">
 			<div class="mainHeader">Ad-Board</div>
-			<a href='<c:url value="/admin"/>'>Admin Home</a>
-			<a href='<c:url value="/admin/adboard/new"/>'>New</a>
 			<div>
 				<div class="gridContainer">
 					<h1 id="gridHeader"></h1>

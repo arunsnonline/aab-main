@@ -16,7 +16,7 @@ public class WelcomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewMenu(ModelMap modelMap) {
-		modelMap.put("modelObject", new AdBoard());
+		modelMap.put("adboard", new AdBoard());
 		return "welcome";
 	}
 
