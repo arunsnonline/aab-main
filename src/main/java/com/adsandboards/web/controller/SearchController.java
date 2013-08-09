@@ -95,8 +95,10 @@ public class SearchController {
 		logger.debug("length:" + length);
 		logger.debug("adboard data:" + adBoard.getStreet());
 
-		List<AdBoard> list = this.adBoardService.getAll(start, length);
-		Long totalCount = this.adBoardService.getTotalCount();
+		Long totalCount = this.adBoardService
+				.getAllBoardsForCriteriaLength(adBoard);
+		List<AdBoard> list = this.adBoardService.getAllBoardsForCriteria(
+				adBoard, start, length);
 		DisplayGrid<AdBoard> displayGrid = new DisplayGrid<AdBoard>(totalCount,
 				totalCount, list);
 		return displayGrid;

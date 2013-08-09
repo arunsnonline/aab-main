@@ -18,19 +18,24 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 	}
 
 	@Override
-	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard) {
+	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard, int start,
+			int length) {
+		logger.info("street query,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,****************:");
 		Long cityId = adBoard.getCity() != null ? adBoard.getCity().getId()
 				: null;
 		List<AdBoard> adBoards = null;
-		String detailedLocationQuery = adBoard.getDetailedLocation() != null ? " and u.detailedLocation like %"
-				+ adBoard.getDetailedLocation() + "%"
-				: "";
+		logger.info("city id.....*********************" + cityId);
 		if (cityId != null) {
-			adBoards = QueryUtil.listAndCast(this.entityManager.createQuery(
-					"select u from " + AdBoard.class.getName()
-							+ " u where u.city.id=:cityId"
-							+ detailedLocationQuery).setParameter("cityId",
-					cityId));
+			adBoards = QueryUtil.listAndCast(this.entityManager
+					.createQuery(
+							"select u from " + AdBoard.class.getName()
+									+ " u where u.city.id=:cityId"
+									+ " and u.street like :street")
+					.setParameter(
+							"street",
+							adBoard.getStreet() != null ? adBoard.getStreet()
+									: "").setParameter("cityId", cityId)
+					.setFirstResult(start).setMaxResults(length));
 		}
 		return adBoards;
 	}
@@ -46,6 +51,27 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 						.setParameter("street", "%" + street + "%")
 						.setParameter("cityId", cityId));
 		return list;
+	}
+
+	@Override
+	public Long getAllBoardsForCriteriaLength(AdBoard adBoard) {
+		logger.info("street query length,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,****************:");
+		Long totalCount = 0L;
+		Long cityId = adBoard.getCity() != null ? adBoard.getCity().getId()
+				: null;
+		if (cityId != null) {
+			totalCount = (Long) this.entityManager
+					.createQuery(
+							"select count(*) from " + AdBoard.class.getName()
+									+ " u where u.city.id=:cityId"
+									+ " and u.street like :street")
+					.setParameter(
+							"street",
+							adBoard.getStreet() != null ? adBoard.getStreet()
+									: "").setParameter("cityId", cityId)
+					.getSingleResult();
+		}
+		return totalCount;
 	}
 
 }

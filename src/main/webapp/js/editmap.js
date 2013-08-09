@@ -62,10 +62,14 @@ $(document).ready(function() {
     	  }
     	    var landmark = $("#detailedLocation").val();
     	    var street = $("#street").val();
-    	    var city = $("#citySearch").val();
-    	    var state = $("#stateSearch").val();
-    	    var country = $("#countrySearch").val();
-    	    var address=landmark+","+street+","+city+","+state+","+country;
+    	    var city = $("#citysearch").val();
+    	    var state = $("#statesearch").val();
+    	    var country = $("#countrysearch").val();
+    	    var address = "";
+    	    if(landmark != null || landmark!="")
+    	    	address=landmark+","+street+","+city+","+state+","+country;
+    	    else
+    	    	address=street+","+city+","+state+","+country;
 			//alert(address);
     	    geocoder.geocode( { 'address': address}, function(results, status) {
     	      if (status == google.maps.GeocoderStatus.OK) {

@@ -20,12 +20,18 @@ public class AdBoardServiceImpl extends GenericServiceImpl<AdBoard, Long>
 	}
 
 	@Override
-	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard) {
-		return this.adBoardDao.getAllBoardsForCriteria(adBoard);
+	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard, int start,
+			int length) {
+		return this.adBoardDao.getAllBoardsForCriteria(adBoard, start, length);
 	}
 
 	@Override
 	public List<String> getSimilarLandmarkList(Long cityId, String street) {
 		return this.adBoardDao.getSimilarLandmarkList(cityId, street);
+	}
+
+	@Override
+	public Long getAllBoardsForCriteriaLength(AdBoard adBoard) {
+		return this.adBoardDao.getAllBoardsForCriteriaLength(adBoard);
 	}
 }

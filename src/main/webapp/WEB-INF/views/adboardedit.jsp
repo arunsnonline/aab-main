@@ -55,8 +55,8 @@
 				<td><input id="citysearch" type="text" value="${cityName}"/></td>
 			</tr>
 			<tr>
-				<td><form:label id="street" path="street">Street</form:label></td>
-				<td><form:input path="street" /></td>
+				<td><form:label path="street">Street</form:label></td>
+				<td><form:input id="street" path="street" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="detailedLocation">Detailed Location</form:label></td>
