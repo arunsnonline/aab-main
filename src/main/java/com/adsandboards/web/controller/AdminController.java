@@ -6,14 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
 
 	static final Logger logger = Logger.getLogger(AdminController.class);
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String viewMenu() {
 		return "adminmenu";
+	}
+
+	@RequestMapping(value = "/adminpanel", method = RequestMethod.GET)
+	public String viewAdminLogin() {
+		return "adminlogin";
 	}
 
 }

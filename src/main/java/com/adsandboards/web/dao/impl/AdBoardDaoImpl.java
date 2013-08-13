@@ -33,9 +33,10 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 									+ " and u.street like :street")
 					.setParameter(
 							"street",
-							adBoard.getStreet() != null ? adBoard.getStreet()
-									: "").setParameter("cityId", cityId)
-					.setFirstResult(start).setMaxResults(length));
+							adBoard.getStreet() != null ? "%"
+									+ adBoard.getStreet() + "%" : "")
+					.setParameter("cityId", cityId).setFirstResult(start)
+					.setMaxResults(length));
 		}
 		return adBoards;
 	}
@@ -67,9 +68,9 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 									+ " and u.street like :street")
 					.setParameter(
 							"street",
-							adBoard.getStreet() != null ? adBoard.getStreet()
-									: "").setParameter("cityId", cityId)
-					.getSingleResult();
+							adBoard.getStreet() != null ? "%"
+									+ adBoard.getStreet() + "%" : "")
+					.setParameter("cityId", cityId).getSingleResult();
 		}
 		return totalCount;
 	}
