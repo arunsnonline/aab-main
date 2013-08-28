@@ -126,4 +126,12 @@ $("#streetId").autocomplete({
 			$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
 	}
 });
+
+$( "#adv_pop" ).toggle();
+
+$( "#adv_pop" ).dialog({
+	height:200px;
+	width:400px
+    modal: true
+  });
 });

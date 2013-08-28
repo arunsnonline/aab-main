@@ -7,8 +7,13 @@
 <script src="js/jquery-1.9.0.min.js"></script>
 <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="js/jquery-migrate-1.1.0.min.js"></script>
+<script src="js/unslider.min.js"></script>
 <script type="text/javascript">
  var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
+ $('.intro').unslider({
+		keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+		dots: true               //  Display dot navigation
+	});
 </script>
 <script src='<spring:url value="/js/main_search.js" htmlEscape="true"/>'></script>
 <style>
@@ -17,28 +22,31 @@
 </head>
 <body>
 		
-			<div class="page">
-					<div class="header">
-						<div class="header-top">
-							<h1>
-								Ads & <span>Boards</span>
-							</h1>
-						</div>
-
-					</div>
-					
-					<div>
+			<div class="header">
+				<img class="board-image" src="images/outdoor-billboard.png" />
+			</div>
+		
+			<div class="page">	
+					<div class="searchbox">
 						<ul>
 						<form:form commandName="adboard" method="post" action="search/adboards">
 							<form:hidden id="cityHiddenId" path="city.id" />
-							<li>Country <input id="countrysearch" type="text"/></li>
-							<li>State <input id="statesearch" type="text"/></li>
-							<li>City <input id="citysearch" type="text"/></li>
-							<li>Street(Optional) <form:input id="streetId" path="street" /></li>
-							<li><input type="submit" value="Search"/></li>
+							<li><input id="countrysearch" type="text" placeholder="Enter Country"/></li>
+							<li><input id="statesearch" type="text" placeholder="Enter State"/></li>
+							<li><input id="citysearch" type="text" placeholder="Enter City"/></li>
+							<li><form:input id="streetId" path="street" placeholder="Enter Street(Optional)"/></li>
+							<li><input type="submit" value="Search"/><a id="adv_search"href="#">More Options...</a></li>
 						</form:form>
 						</ul>
 					</div>
+					
+<!--	 <div class="intro"> 
+						  <ul>
+        					<li style="background-color: #780000">This is a slide.</li>
+        					<li style="background-color: #0099CC">This is another slide.</li>
+        					<li style="background-color: #FFFF66">This is a final slide.</li>
+    					</ul>
+					</div> -->
 					
 					<div class="footer">
 						<p>
@@ -57,6 +65,20 @@
 					</div>
 				
 			
+		</div>
+		
+		<div id="adv_pop">
+		<form:form commandName="adboard" method="post" action="search/adboards">
+			<ul>
+							<form:hidden id="cityHiddenId" path="city.id" />
+							<li><input id="countrysearch" type="text" placeholder="Enter Country"/></li>
+							<li><input id="statesearch" type="text" placeholder="Enter State"/></li>
+							<li><input id="citysearch" type="text" placeholder="Enter City"/></li>
+							<li><form:input id="streetId" path="street" placeholder="Enter Street(Optional)"/></li>
+							<li><input type="submit" value="Search"/></li>
+			</ul>
+						
+						</form:form>
 		</div>
 	
 </body>

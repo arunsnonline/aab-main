@@ -2,10 +2,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #4d5051;
-	background-color: #d6d6d6;
-	background-image: url(../images/top-rept.jpg);
-	background-repeat: repeat-x;
-	background-position: left top;
+	background-color: #fdf0d8;
 	margin: 0px;
 }
 h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
@@ -13,21 +10,46 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	margin: 0px;
 }
 
+.searchbox {
+    background-color: #6699FF;
+    border-radius: 10px 30px 10px 30px;
+    float: right;
+    margin: 12px 12px 0 0;
+    width: 235px;
+	text-align: center;
+}
+
+.searchbox ul {
+	line-height: 1.4;
+    list-style-type: none;
+    margin-left: 35px;
+}
+
+.searchbox ul  li {
+     display: inline;
+     text-align: center;
+}
+
 .page {
 	width: 1000px;
+	height:100%;
 	margin: 0px auto;
+	background-color: #003366;
+	border-radius:35px 35px 0px 0px;
+	margin-top:125px;
 }
 .header {
-	width: 1000px;
-	float: left;
+	width: 100%;
+	height: 100px;
+	background-image: url(../images/ad-banner.jpg);
+	background-repeat: repeat-x;
+	position:relative;left:0px;top:0px;z-index:1;
 }
-.header-top {
-	background-image: url(../images/header-top.jpg);
+
+.board-image {
 	background-repeat: no-repeat;
-	background-position: left top;
-	width: 1000px;
-	height: 81px;
-	float: left;
+	margin: 0px auto;
+	position:absolute;left:200px;top:0px;z-index:10;
 }
 
 .quickurl {
@@ -36,17 +58,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	height: 81px;
 	float: left;
 }
-.header-top h1 {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 55px;
-	font-weight: normal;
-	line-height: 81px;
-	color: #FFFFFF;
-	margin-left: 115px;
-}
-.header-top h1 span {
-	color: #000000;
-}
+
 .header-bottom {
 	background-image: url(../images/header.jpg);
 	background-repeat: no-repeat;
@@ -153,3 +165,11 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 .footer ul li a:hover {
 	text-decoration: underline;
 }
+
+.intro { position: relative; overflow: auto; }
+.intro li { list-style: none; float: left;}
+.intro ul li { margin:0px auto;height:200px;width:400px; left;  border-radius: 30px 30px 30px 30px; }
+
+#adv_pop { margin:0px auto;background-color:#fdf0d8 }
+#adv_pop li { list-style: none; float: left;}
+#adv_pop ul li { margin:0px auto;  border-radius: 30px 30px 30px 30px; }
