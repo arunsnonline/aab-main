@@ -1,5 +1,6 @@
 package com.adsandboards.web.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,12 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * 
  * @author arun
  * 
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "tblAdboard")
 public class AdBoard extends BaseModel {
 
@@ -166,6 +171,19 @@ public class AdBoard extends BaseModel {
 
 	public void setUom(String uom) {
 		this.uom = uom;
+	}
+
+	@Transient
+	public boolean isAvailable() {
+		if (contractStartDate == null || contractDays == null)
+			return false;
+		Date currentDate = new Date();
+		Calendar contractEndDate = Calendar.getInstance();
+		contractEndDate.add(Calendar.DAY_OF_MONTH, contractDays);
+		if (!(currentDate.after(contractStartDate) && contractEndDate
+				.after(currentDate)))
+			return false;
+		return true;
 	}
 
 }

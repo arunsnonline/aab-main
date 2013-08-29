@@ -35,7 +35,7 @@
 							<li><input id="statesearch" type="text" placeholder="Enter State"/></li>
 							<li><input id="citysearch" type="text" placeholder="Enter City"/></li>
 							<li><form:input id="streetId" path="street" placeholder="Enter Street(Optional)"/></li>
-							<li><input type="submit" value="Search"/><a id="adv_search"href="#">More Options...</a></li>
+							<li><input type="submit" value="Search"/><a id="adv_search" href="#">More Search Options</a></li>
 						</form:form>
 						</ul>
 					</div>
@@ -71,14 +71,24 @@
 		<form:form commandName="adboard" method="post" action="search/adboards">
 			<ul>
 							<form:hidden id="cityHiddenId" path="city.id" />
-							<li><input id="countrysearch" type="text" placeholder="Enter Country"/></li>
-							<li><input id="statesearch" type="text" placeholder="Enter State"/></li>
-							<li><input id="citysearch" type="text" placeholder="Enter City"/></li>
-							<li><form:input id="streetId" path="street" placeholder="Enter Street(Optional)"/></li>
-							<li><input type="submit" value="Search"/></li>
+							<form:hidden id="contractDays" path="contractDays" />
+							<form:hidden id="contractStartDate" path="contractStartDate" />
+							<li><input id="countrysearchpop" type="text" placeholder="Enter Country"/></li>
+							<li><input id="statesearchpop" type="text" placeholder="Enter State"/></li>
+							<li><input id="citysearchpop" type="text" placeholder="Enter City"/></li>
+							<li><form:input id="streetIdpop" path="street" placeholder="Enter Street(Optional)"/></li>
+							
 			</ul>
-						
-						</form:form>
+			<ul>
+							<li><input id="available" type="checkbox">Show only available<br></li>
+							<li><form:input path="length" placeholder="Length in Ft"/></li>
+							<li><form:input path="breadth" placeholder="Breadth in Ft"/></li>
+							<li><form:input path="detailedLocation" placeholder="Landmark"/></li>
+							<li><form:select path="boardType.id" items="${boardTypeList}" itemValue="id" itemLabel="name"/></li>
+							
+			</ul>
+						<input type="submit" value="Search"/>
+		</form:form>
 		</div>
 	
 </body>

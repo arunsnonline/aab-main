@@ -77,7 +77,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="contractStartDate">Contract Start Date</form:label></td>
-				<td><form:input path="contractStartDate" /></td>
+				<td><form:input path="contractStartDate" placeholder="DD/MM/YYYY"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="length">Length</form:label></td>

@@ -1,10 +1,15 @@
 package com.adsandboards.web.controller;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +34,13 @@ public abstract class GenericController<T, PK extends Serializable> {
 
 	public GenericController(GenericService<T, PK> genericService) {
 		this.genericService = genericService;
+	}
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, false));
 	}
 
 	protected abstract T getNewCommand();

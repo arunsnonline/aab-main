@@ -1,20 +1,59 @@
 $(document).ready(function() {	
 var countryId,stateId,cityId;
 
-$("#countrysearch").autocomplete({		
+function searchBoxAutoComplete(inputId,ajaxUrl,inputModel){
+	$("#"+inputId).autocomplete({		
 		source: function (request, response) {
 			 	$.ajax({
-					url: contextRoot+"search/country/list.htm",
+					url: contextRoot+ajaxUrl,
 					dataType: "json",
-					data: { 
-						cname_startsWith: request.term
-			  		},
+					data: (function(){
+								if(inputModel=="country"){
+									return { 
+										cname_startsWith: request.term
+									} 
+								}else
+								if(inputModel=="state"){
+									return { 
+										stateNameStartsWith: request.term,
+										countryId: countryId
+									} 
+								}else
+								if(inputModel=="city"){
+									return { 
+										cityNameStartsWith: request.term,
+										stateId:stateId
+									} 
+								}else{
+									return { 
+										cityId:cityId,
+										street: request.term
+									} 
+								}	
+							})()
+					,
 					success: function (data) {
 
 						response($.map( data, function( item ) {
+						var labelValue,itemValue;
+						if(inputModel=="country"){
+							labelValue =  item.countryName;
+							itemValue =  item.id;
+						}else
+						if(inputModel=="state"){
+							labelValue = item.stateName;
+							itemValue= item.id;
+						}else
+						if(inputModel=="city"){
+							labelValue = item.cityName;
+							itemValue= item.id;
+						}else{
+							labelValue = item;
+							itemValue = item;
+						}
 					return {
-						label: item.countryName ,
-						value: item.id
+							label: labelValue ,
+							value: itemValue
 					}
 				}));
 
@@ -23,7 +62,16 @@ $("#countrysearch").autocomplete({
 		},
 		select: function( event, ui ) {
 			event.preventDefault();
-			countryId=ui.item.value;
+			if(inputModel=="country"){
+							countryId=ui.item.value;
+			}else
+			if(inputModel=="state"){
+							stateId=ui.item.value;
+			}else
+			if(inputModel=="city"){
+							cityId=ui.item.value;
+							$("#cityHiddenId").val(ui.item.value);
+			}
 			$(this).val(ui.item.label);
 		},
 		open: function () {
@@ -33,105 +81,47 @@ $("#countrysearch").autocomplete({
 				$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
 		}
 	});
+}
 
-$("#statesearch").autocomplete({
-		source: function (request, response) {
-			 	$.ajax({
-					url: contextRoot+"search/state/list.htm",
-					dataType: "json",
-					data: { 
-						stateNameStartsWith: request.term,
-						countryId: countryId
-			  		},
-					success: function (data) {
 
-						response($.map( data, function( item ) {
-					return {
-						label: item.stateName ,
-						value: item.id
-					}
-				}));
 
-					}
-		  	});
-		},
-		select: function( event, ui ) {
-			event.preventDefault();
-			stateId=ui.item.value;
-			$(this).val(ui.item.label);
-		},
-		open: function () {
-				$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-		},
-		close: function () {
-				$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-		}
-	});
-$("#citysearch").autocomplete({
-	source: function (request, response) {
-		 	$.ajax({
-				url: contextRoot+"search/city/list.htm",
-				dataType: "json",
-				data: { 
-					cityNameStartsWith: request.term,
-					stateId:stateId
-		  		},
-				success: function (data) {
-					response($.map( data, function( item ) {
-				return {
-					label: item.cityName ,
-					value: item.id
-				}
-			}));
+searchBoxAutoComplete("countrysearch","search/country/list.htm","country");
+searchBoxAutoComplete("statesearch","search/state/list.htm","state");
+searchBoxAutoComplete("citysearch","search/city/list.htm","city");
+searchBoxAutoComplete("streetId","search/street/list.htm","street");
+searchBoxAutoComplete("countrysearchpop","search/country/list.htm","country");
+searchBoxAutoComplete("statesearchpop","search/state/list.htm","state");
+searchBoxAutoComplete("citysearchpop","search/city/list.htm","city");
+searchBoxAutoComplete("streetIdpop","search/street/list.htm","street");
 
-				}
-	  	});
-	},
-	select: function( event, ui ) {
-		event.preventDefault();
-		$("#cityHiddenId").val(ui.item.value);
-		$(this).val(ui.item.label);
-	},
-	open: function () {
-			$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-	},
-	close: function () {
-			$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-	}
-});
-$("#streetId").autocomplete({
-	source: function (request, response) {
-		 	$.ajax({
-				url: contextRoot+"search/street/list.htm",
-				dataType: "json",
-				data: { 
-					cityId:$("#cityHiddenId").val(),
-					street: request.term
-		  		},
-				success: function (data) {
-					response($.map( data, function( item ) {
-				return {
-					label: item ,
-					value: item
-				}
-			}));
-
-				}
-	  	});
-	},
-	open: function () {
-			$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-	},
-	close: function () {
-			$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-	}
+$( "#adv_search" ).click(function(){
+	if ($("#adv_pop").dialog( "isOpen" )==false) {
+		$( "#adv_pop" ).dialog( "open" );
+	} 
 });
 
-$( "#adv_pop" ).toggle();
 
-$( "#adv_pop" ).dialog({
-	height:200px;
-	width:400px
-    modal: true
-  });
+ $( "#adv_pop" ).dialog({
+      height: 400,
+	  width: 300,
+	  autoOpen: false,
+      modal: true
+    });
+/*if$("#available").click(function(){
+    alert("clicked");
+     ($(this).attr("checked") == "checked"){
+    	var d = new Date();
+    	d.setDate(d.getDate()-1);
+    	var month = d.getMonth()+1;
+    	var day = d.getDate();
+    	var output = (day<10 ? '0' : '') + day + '/' +
+    	    		 (month<10 ? '0' : '') + month + '/' + 
+    	    		 d.getFullYear();
+    	$("#contractStartDate").val(output);
+        $("#contractDays").val(10);
+    } else {
+    	$("#contractStartDate").val(null);
+        $("#contractDays").val(null);
+    }
+  });*/
 });
