@@ -18,7 +18,7 @@
 <link rel="stylesheet" href='<spring:url value="/css/grid.css" htmlEscape="true"/>'/>
 <script type="text/javascript">
  var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
- var adboard =  ${ju:toJson(adboard)};
+ var searchCriteria =  ${ju:toJson(searchcriteria)};
 </script>
 <script src='<spring:url value="/js/adboard_searchresult_grid.js" htmlEscape="true"/>'></script>
 <style>

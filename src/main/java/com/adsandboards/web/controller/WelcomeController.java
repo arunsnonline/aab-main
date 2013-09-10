@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adsandboards.web.model.AdBoard;
+import com.adsandboards.web.model.SearchCriteria;
 
 @Controller
 @RequestMapping("/welcome")
@@ -16,7 +16,7 @@ public class WelcomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewMenu(ModelMap modelMap) {
-		modelMap.put("adboard", new AdBoard());
+		modelMap.put("searchcriteria", new SearchCriteria());
 		return "welcome";
 	}
 

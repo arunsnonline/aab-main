@@ -19,7 +19,7 @@ function searchBoxAutoComplete(inputId,ajaxUrl,inputModel){
 										countryId: countryId
 									} 
 								}else
-								if(inputModel=="city"){
+								if(inputModel=="city" || inputModel=="citypop"){
 									return { 
 										cityNameStartsWith: request.term,
 										stateId:stateId
@@ -44,7 +44,7 @@ function searchBoxAutoComplete(inputId,ajaxUrl,inputModel){
 							labelValue = item.stateName;
 							itemValue= item.id;
 						}else
-						if(inputModel=="city"){
+						if(inputModel=="city" || inputModel=="citypop"){
 							labelValue = item.cityName;
 							itemValue= item.id;
 						}else{
@@ -71,6 +71,10 @@ function searchBoxAutoComplete(inputId,ajaxUrl,inputModel){
 			if(inputModel=="city"){
 							cityId=ui.item.value;
 							$("#cityHiddenId").val(ui.item.value);
+			}else
+			if(inputModel=="citypop"){
+							cityId=ui.item.value;
+							$("#cityHiddenPopId").val(ui.item.value);
 			}
 			$(this).val(ui.item.label);
 		},
@@ -91,7 +95,7 @@ searchBoxAutoComplete("citysearch","search/city/list.htm","city");
 searchBoxAutoComplete("streetId","search/street/list.htm","street");
 searchBoxAutoComplete("countrysearchpop","search/country/list.htm","country");
 searchBoxAutoComplete("statesearchpop","search/state/list.htm","state");
-searchBoxAutoComplete("citysearchpop","search/city/list.htm","city");
+searchBoxAutoComplete("citysearchpop","search/city/list.htm","citypop");
 searchBoxAutoComplete("streetIdpop","search/street/list.htm","street");
 
 $( "#adv_search" ).click(function(){

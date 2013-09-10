@@ -18,6 +18,7 @@ import com.adsandboards.web.model.AdBoard;
 import com.adsandboards.web.model.City;
 import com.adsandboards.web.model.Country;
 import com.adsandboards.web.model.DisplayGrid;
+import com.adsandboards.web.model.SearchCriteria;
 import com.adsandboards.web.model.State;
 import com.adsandboards.web.service.AdBoardService;
 import com.adsandboards.web.service.CityService;
@@ -83,22 +84,24 @@ public class SearchController {
 	public DisplayGrid<AdBoard> getSearchBoardResults(
 			@RequestParam(value = "iDisplayStart") int start,
 			@RequestParam(value = "iDisplayLength") int length,
-			@RequestParam(value = "adboardJson") String adboardJson)
+			@RequestParam(value = "searchCriteriaJson") String searchCriteriaJson)
 			throws JsonParseException, JsonMappingException, IOException {
 		logger.debug("adboard struing*****************************************************"
-				+ adboardJson);
-		AdBoard adBoard = new ObjectMapper().readValue(adboardJson,
-				AdBoard.class);
+				+ searchCriteriaJson);
+		SearchCriteria searchCriteria = new ObjectMapper().readValue(
+				searchCriteriaJson, SearchCriteria.class);
 		logger.debug("inside seach board*****************************************************"
-				+ adBoard);
-		logger.debug("start:" + start);
-		logger.debug("length:" + length);
-		logger.debug("adboard data:" + adBoard.getStreet());
+				+ searchCriteria);
+		logger.info("start:" + start);
+		logger.info("length:" + length);
+		logger.info("adboard data:" + searchCriteria.getAdboard().getStreet());
+		logger.info("adboard data.................:"
+				+ searchCriteria.isAvailable());
 
 		Long totalCount = this.adBoardService
-				.getAllBoardsForCriteriaLength(adBoard);
+				.getAllBoardsForCriteriaLength(searchCriteria);
 		List<AdBoard> list = this.adBoardService.getAllBoardsForCriteria(
-				adBoard, start, length);
+				searchCriteria, start, length);
 		DisplayGrid<AdBoard> displayGrid = new DisplayGrid<AdBoard>(totalCount,
 				totalCount, list);
 		return displayGrid;

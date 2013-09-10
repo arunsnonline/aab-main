@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adsandboards.web.model.AdBoard;
+import com.adsandboards.web.model.SearchCriteria;
 
 @Controller
 public class SearchListingController {
 
 	@RequestMapping(value = "/search/adboards", method = RequestMethod.POST)
 	public String getBoardsForSearch(
-			@ModelAttribute("adboard") AdBoard adBoard,
+			@ModelAttribute("adboard") SearchCriteria searchCriteria,
 			BindingResult bindingResult, ModelMap modelMap) {
-		modelMap.put("adboard", adBoard);
+		modelMap.put("searchcriteria", searchCriteria);
 		return "searchresults";
 	}
 

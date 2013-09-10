@@ -2,14 +2,14 @@
 
 $(document).ready(function() {	
 	
-	var adboardJson = JSON.stringify(adboard);
+	var searchCriteriaJson = JSON.stringify(searchCriteria);
     tableObj = $('#mainGrid').dataTable( {
     "bProcessing": true, 
     "bServerSide": true,
     "sAjaxSource": "adboards/list.htm", 
     "sServerMethod": "POST",
     "fnServerParams": function ( aoData ) {
-       aoData.push(  { "name": "adboardJson", "value": adboardJson }  );
+       aoData.push(  { "name": "searchCriteriaJson", "value": searchCriteriaJson }  );
     },
 	"bJQueryUI": true,
 	"aaSorting": [[0,'asc']] , 

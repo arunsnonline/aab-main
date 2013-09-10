@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.adsandboards.web.dao.AdBoardDao;
 import com.adsandboards.web.model.AdBoard;
+import com.adsandboards.web.model.SearchCriteria;
 import com.adsandboards.web.util.QueryUtil;
 
 public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
@@ -18,25 +19,29 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 	}
 
 	@Override
-	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard, int start,
-			int length) {
+	public List<AdBoard> getAllBoardsForCriteria(SearchCriteria searchCriteria,
+			int start, int length) {
 		logger.info("street query,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,****************:");
-		Long cityId = adBoard.getCity() != null ? adBoard.getCity().getId()
+		Long cityId = searchCriteria.getAdboard().getCity() != null ? searchCriteria
+				.getAdboard().getCity().getId()
 				: null;
 		List<AdBoard> adBoards = null;
 		logger.info("city id.....*********************" + cityId);
 		if (cityId != null) {
-			adBoards = QueryUtil.listAndCast(this.entityManager
-					.createQuery(
-							"select u from " + AdBoard.class.getName()
-									+ " u where u.city.id=:cityId"
-									+ " and u.street like :street")
-					.setParameter(
-							"street",
-							adBoard.getStreet() != null ? "%"
-									+ adBoard.getStreet() + "%" : "")
-					.setParameter("cityId", cityId).setFirstResult(start)
-					.setMaxResults(length));
+			adBoards = QueryUtil
+					.listAndCast(this.entityManager
+							.createQuery(
+									"select u from " + AdBoard.class.getName()
+											+ " u where u.city.id=:cityId"
+											+ " and u.street like :street")
+							.setParameter("cityId", cityId)
+							.setParameter(
+									"street",
+									searchCriteria.getAdboard().getStreet() != null ? "%"
+											+ searchCriteria.getAdboard()
+													.getStreet() + "%"
+											: "").setFirstResult(start)
+							.setMaxResults(length));
 		}
 		return adBoards;
 	}
@@ -55,10 +60,11 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 	}
 
 	@Override
-	public Long getAllBoardsForCriteriaLength(AdBoard adBoard) {
+	public Long getAllBoardsForCriteriaLength(SearchCriteria searchCriteria) {
 		logger.info("street query length,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,****************:");
 		Long totalCount = 0L;
-		Long cityId = adBoard.getCity() != null ? adBoard.getCity().getId()
+		Long cityId = searchCriteria.getAdboard().getCity() != null ? searchCriteria
+				.getAdboard().getCity().getId()
 				: null;
 		if (cityId != null) {
 			totalCount = (Long) this.entityManager
@@ -68,9 +74,11 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements
 									+ " and u.street like :street")
 					.setParameter(
 							"street",
-							adBoard.getStreet() != null ? "%"
-									+ adBoard.getStreet() + "%" : "")
-					.setParameter("cityId", cityId).getSingleResult();
+							searchCriteria.getAdboard().getStreet() != null ? "%"
+									+ searchCriteria.getAdboard().getStreet()
+									+ "%"
+									: "").setParameter("cityId", cityId)
+					.getSingleResult();
 		}
 		return totalCount;
 	}

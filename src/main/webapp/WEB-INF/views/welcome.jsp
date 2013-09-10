@@ -29,12 +29,12 @@
 			<div class="page">	
 					<div class="searchbox">
 						<ul>
-						<form:form commandName="adboard" method="post" action="search/adboards">
-							<form:hidden id="cityHiddenId" path="city.id" />
+						<form:form commandName="searchcriteria" method="post" action="search/adboards">
+							<form:hidden id="cityHiddenId" path="adboard.city.id" />
 							<li><input id="countrysearch" type="text" placeholder="Enter Country"/></li>
 							<li><input id="statesearch" type="text" placeholder="Enter State"/></li>
 							<li><input id="citysearch" type="text" placeholder="Enter City"/></li>
-							<li><form:input id="streetId" path="street" placeholder="Enter Street(Optional)"/></li>
+							<li><form:input id="streetId" path="adboard.street" placeholder="Enter Street(Optional)"/></li>
 							<li><input type="submit" value="Search"/><a id="adv_search" href="#">More Search Options</a></li>
 						</form:form>
 						</ul>
@@ -68,23 +68,23 @@
 		</div>
 		
 		<div id="adv_pop">
-		<form:form commandName="adboard" method="post" action="search/adboards">
+		<form:form commandName="searchcriteria" method="post" action="search/adboards">
 			<ul>
-							<form:hidden id="cityHiddenId" path="city.id" />
-							<form:hidden id="contractDays" path="contractDays" />
-							<form:hidden id="contractStartDate" path="contractStartDate" />
+							<form:hidden id="cityHiddenPopId" path="adboard.city.id" />
+							<form:hidden id="contractDays" path="adboard.contractDays" />
+							<form:hidden id="contractStartDate" path="adboard.contractStartDate" />
 							<li><input id="countrysearchpop" type="text" placeholder="Enter Country"/></li>
 							<li><input id="statesearchpop" type="text" placeholder="Enter State"/></li>
 							<li><input id="citysearchpop" type="text" placeholder="Enter City"/></li>
-							<li><form:input id="streetIdpop" path="street" placeholder="Enter Street(Optional)"/></li>
+							<li><form:input id="streetIdpop" path="adboard.street" placeholder="Enter Street(Optional)"/></li>
 							
 			</ul>
 			<ul>
-							<li><input id="available" type="checkbox">Show only available<br></li>
-							<li><form:input path="length" placeholder="Length in Ft"/></li>
-							<li><form:input path="breadth" placeholder="Breadth in Ft"/></li>
-							<li><form:input path="detailedLocation" placeholder="Landmark"/></li>
-							<li><form:select path="boardType.id" items="${boardTypeList}" itemValue="id" itemLabel="name"/></li>
+							<li><form:checkbox id="available" path="available"/>Show only available<br></li>
+							<li><form:input path="adboard.length" placeholder="Length in Ft"/></li>
+							<li><form:input path="adboard.breadth" placeholder="Breadth in Ft"/></li>
+							<li><form:input path="adboard.detailedLocation" placeholder="Landmark"/></li>
+							<li><form:select path="adboard.boardType.id" items="${boardTypeList}" itemValue="id" itemLabel="name"/></li>
 							
 			</ul>
 						<input type="submit" value="Search"/>

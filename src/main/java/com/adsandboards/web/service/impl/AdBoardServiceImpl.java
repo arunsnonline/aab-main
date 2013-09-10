@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.adsandboards.web.dao.AdBoardDao;
 import com.adsandboards.web.model.AdBoard;
+import com.adsandboards.web.model.SearchCriteria;
 import com.adsandboards.web.service.AdBoardService;
 
 public class AdBoardServiceImpl extends GenericServiceImpl<AdBoard, Long>
@@ -20,9 +21,10 @@ public class AdBoardServiceImpl extends GenericServiceImpl<AdBoard, Long>
 	}
 
 	@Override
-	public List<AdBoard> getAllBoardsForCriteria(AdBoard adBoard, int start,
-			int length) {
-		return this.adBoardDao.getAllBoardsForCriteria(adBoard, start, length);
+	public List<AdBoard> getAllBoardsForCriteria(SearchCriteria searchCriteria,
+			int start, int length) {
+		return this.adBoardDao.getAllBoardsForCriteria(searchCriteria, start,
+				length);
 	}
 
 	@Override
@@ -31,7 +33,7 @@ public class AdBoardServiceImpl extends GenericServiceImpl<AdBoard, Long>
 	}
 
 	@Override
-	public Long getAllBoardsForCriteriaLength(AdBoard adBoard) {
-		return this.adBoardDao.getAllBoardsForCriteriaLength(adBoard);
+	public Long getAllBoardsForCriteriaLength(SearchCriteria searchCriteria) {
+		return this.adBoardDao.getAllBoardsForCriteriaLength(searchCriteria);
 	}
 }
