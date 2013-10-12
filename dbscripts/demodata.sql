@@ -45,7 +45,7 @@ CREATE TABLE `tblAccount` (
 
 LOCK TABLES `tblAccount` WRITE;
 /*!40000 ALTER TABLE `tblAccount` DISABLE KEYS */;
-INSERT INTO `tblAccount` VALUES (1,'asdflk','kljsdf','kjsad@kljd.com','98797809','32023984593','www.ds.com','asdfsadf','78787878',6),(2,'Boards','niodfndsiof','jhkjdshg@abc.com','5546456','1321323','abc.com','Jose','98709870987',11);
+INSERT INTO `tblAccount` VALUES (1,'Rainbow','kljsdf','kjsad@kljd.com','98797809','32023984593','www.ds.com','asdfsadf','78787878',6),(2,'Boards','niodfndsiof','jhkjdshg@abc.com','5546456','1321323','abc.com','Jose','98709870987',11);
 /*!40000 ALTER TABLE `tblAccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ CREATE TABLE `tblAdboard` (
   CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
   CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
   CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `tblAdboard` (
 
 LOCK TABLES `tblAdboard` WRITE;
 /*!40000 ALTER TABLE `tblAdboard` DISABLE KEYS */;
-INSERT INTO `tblAdboard` VALUES (1,60,'2013-02-06 00:00:00',0,0,'Near Forum Mall','80 Ft Road',2,1,1,'FT',30,40);
+INSERT INTO `tblAdboard` VALUES (1,60,'2013-08-28 00:00:00',12.9317,77.6185,'Near Forum Mall,Bangalore','80 Ft Road',NULL,1,1,'FT',30,40),(2,40,NULL,0,0,'near garuda mall','mg road',NULL,1,1,'ft',40,50);
 /*!40000 ALTER TABLE `tblAdboard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `tblCity` (
   PRIMARY KEY (`cityId`),
   KEY `fk_city_state` (`stateId`),
   CONSTRAINT `fk_city_state` FOREIGN KEY (`stateId`) REFERENCES `tblstate` (`stateId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `tblCity` (
 
 LOCK TABLES `tblCity` WRITE;
 /*!40000 ALTER TABLE `tblCity` DISABLE KEYS */;
-INSERT INTO `tblCity` VALUES (1,'Bangalore',1);
+INSERT INTO `tblCity` VALUES (1,'Bangalore',1),(2,'Kottayam',2);
 /*!40000 ALTER TABLE `tblCity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +257,7 @@ CREATE TABLE `tblOrganization` (
 
 LOCK TABLES `tblOrganization` WRITE;
 /*!40000 ALTER TABLE `tblOrganization` DISABLE KEYS */;
-INSERT INTO `tblOrganization` VALUES (1,'some organzz'),(2,'Rainbow boy'),(3,'Fun Com'),(4,'black'),(5,'orange'),(6,'green'),(7,'bring'),(8,'left'),(9,'boom'),(10,'flank'),(11,'jboards'),(12,'jboards');
+INSERT INTO `tblOrganization` VALUES (1,'some organzation'),(2,'Rainbow'),(3,'Fun Com'),(4,'black'),(5,'orange'),(6,'green'),(7,'bring'),(8,'left'),(9,'boom'),(10,'flank rob'),(11,'jboards next'),(12,'jboards');
 /*!40000 ALTER TABLE `tblOrganization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +300,7 @@ CREATE TABLE `tblState` (
   PRIMARY KEY (`stateId`),
   KEY `fk_state_country` (`countryId`),
   CONSTRAINT `fk_state_country` FOREIGN KEY (`countryId`) REFERENCES `tblcountry` (`countryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +309,7 @@ CREATE TABLE `tblState` (
 
 LOCK TABLES `tblState` WRITE;
 /*!40000 ALTER TABLE `tblState` DISABLE KEYS */;
-INSERT INTO `tblState` VALUES (1,'Karnataka',1);
+INSERT INTO `tblState` VALUES (1,'Karnataka',1),(2,'KERALA',1);
 /*!40000 ALTER TABLE `tblState` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-23  0:38:34
+-- Dump completed on 2013-10-12 19:33:33

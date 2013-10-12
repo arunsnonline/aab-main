@@ -67,7 +67,7 @@ CREATE TABLE `tblAdboard` (
   CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
   CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
   CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `tblCity` (
   PRIMARY KEY (`cityId`),
   KEY `fk_city_state` (`stateId`),
   CONSTRAINT `fk_city_state` FOREIGN KEY (`stateId`) REFERENCES `tblstate` (`stateId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `tblState` (
   PRIMARY KEY (`stateId`),
   KEY `fk_state_country` (`countryId`),
   CONSTRAINT `fk_state_country` FOREIGN KEY (`countryId`) REFERENCES `tblcountry` (`countryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,4 +241,4 @@ CREATE TABLE `tblUserRole` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-23  0:38:54
+-- Dump completed on 2013-10-12 19:33:47
