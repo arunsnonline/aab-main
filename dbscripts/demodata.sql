@@ -50,47 +50,6 @@ INSERT INTO `tblAccount` VALUES (1,'Rainbow','kljsdf','kjsad@kljd.com','98797809
 UNLOCK TABLES;
 
 --
--- Table structure for table `tblAdboard`
---
-
-DROP TABLE IF EXISTS `tblAdboard`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblAdboard` (
-  `adboardId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `contractDays` int(11) DEFAULT NULL,
-  `contractStartDate` datetime DEFAULT NULL,
-  `locLat` float DEFAULT NULL,
-  `locLong` float DEFAULT NULL,
-  `detailedLocation` varchar(255) DEFAULT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `accountId` bigint(20) DEFAULT NULL,
-  `cityId` bigint(20) NOT NULL,
-  `boardTypeId` bigint(20) NOT NULL,
-  `uom` varchar(10) DEFAULT NULL,
-  `length` int(11) DEFAULT '0',
-  `breadth` int(11) DEFAULT '0',
-  PRIMARY KEY (`adboardId`),
-  KEY `fk_adboard_account` (`accountId`),
-  KEY `fk_adboard_city` (`cityId`),
-  KEY `fk_adboard_boardtype` (`boardTypeId`),
-  CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
-  CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
-  CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tblAdboard`
---
-
-LOCK TABLES `tblAdboard` WRITE;
-/*!40000 ALTER TABLE `tblAdboard` DISABLE KEYS */;
-INSERT INTO `tblAdboard` VALUES (1,60,'2013-08-28 00:00:00',12.9317,77.6185,'Near Forum Mall,Bangalore','80 Ft Road',NULL,1,1,'FT',30,40),(2,40,NULL,0,0,'near garuda mall','mg road',NULL,1,1,'ft',40,50);
-/*!40000 ALTER TABLE `tblAdboard` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tblAdboardEnquiryHistory`
 --
 
@@ -157,7 +116,7 @@ CREATE TABLE `tblAppUser` (
 
 LOCK TABLES `tblAppUser` WRITE;
 /*!40000 ALTER TABLE `tblAppUser` DISABLE KEYS */;
-INSERT INTO `tblAppUser` VALUES (1,'\0','\0','\0',NULL,NULL,NULL,'\0',NULL,NULL,NULL,'21232f297a57a5a743894a0e4a801fc3',NULL,NULL,NULL,'admin',1,NULL,NULL,NULL);
+INSERT INTO `tblAppUser` VALUES (1,'\0','\0','\0',NULL,NULL,NULL,'\0',NULL,NULL,NULL,'21232f297a57a5a743894a0e4a801fc3',NULL,NULL,NULL,'admin',1,NULL,NULL,1);
 /*!40000 ALTER TABLE `tblAppUser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,6 +297,48 @@ LOCK TABLES `tblUserRole` WRITE;
 /*!40000 ALTER TABLE `tblUserRole` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tblUserRole` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbladboard`
+--
+
+DROP TABLE IF EXISTS `tbladboard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbladboard` (
+  `adboardId` bigint(20) NOT NULL AUTO_INCREMENT,
+  `boardUUID` varchar(50) DEFAULT NULL,
+  `contractDays` int(11) DEFAULT NULL,
+  `contractStartDate` datetime DEFAULT NULL,
+  `locLat` float DEFAULT NULL,
+  `locLong` float DEFAULT NULL,
+  `detailedLocation` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `accountId` bigint(20) DEFAULT NULL,
+  `cityId` bigint(20) NOT NULL,
+  `boardTypeId` bigint(20) NOT NULL,
+  `uom` varchar(10) DEFAULT NULL,
+  `length` int(11) DEFAULT '0',
+  `breadth` int(11) DEFAULT '0',
+  PRIMARY KEY (`adboardId`),
+  KEY `fk_adboard_account` (`accountId`),
+  KEY `fk_adboard_city` (`cityId`),
+  KEY `fk_adboard_boardtype` (`boardTypeId`),
+  CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
+  CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
+  CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbladboard`
+--
+
+LOCK TABLES `tbladboard` WRITE;
+/*!40000 ALTER TABLE `tbladboard` DISABLE KEYS */;
+INSERT INTO `tbladboard` VALUES (1,'d8442962-5e7a-4df6-88c7-3a6d240316e3',60,'2013-08-28 00:00:00',12.9317,77.6185,'Near Forum Mall,Bangalore','80 Ft Road',NULL,1,1,'FT',30,40),(2,'20356a52-13e1-40c7-883f-1901e560fe65',20,'2013-08-15 00:00:00',0,0,'near garuda mall','mg road',NULL,1,1,'ft',40,50);
+/*!40000 ALTER TABLE `tbladboard` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -348,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-12 19:33:33
+-- Dump completed on 2013-11-03 20:25:30

@@ -11,7 +11,9 @@
 <script src='<spring:url value="/js/editmap.js" htmlEscape="true"/>'></script>
 <script type="text/javascript">
  var contextRoot='<spring:url javaScriptEscape="true" value="/" htmlEscape="true"/>';
- $( "#tabs" ).tabs();
+ $(function() {
+	    $( "#tabs" ).tabs();
+ });
 </script>
 <script src='<spring:url value="/js/country_state_city_search.js" htmlEscape="true"/>'></script>
 <script type="text/javascript"
@@ -30,6 +32,7 @@
 
 		<table>
 				<form:hidden path="id" />
+				<form:hidden path="boardUUID" />
 				<form:hidden id="lathidden" path="locationLatitude" />
 				<form:hidden id="lnghidden" path="locationLongitude" />
 				<form:hidden id="cityHiddenId" path="city.id" />
@@ -113,11 +116,11 @@
     <li><a href="#mapView">Map View</a></li>
     <li><a href="#uploadPhotos">Upload Photos</a></li>
   </ul>
-  <div id="#mapView">
+  <div id="mapView">
     <div id="map-canvas"/>
   </div>
-  <div id="#uploadPhotos">
-    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+  <div id="uploadPhotos">
+    <p>UPLOAD PHOTOS HERE!</p>
   </div>
 </div>
 	</form:form>

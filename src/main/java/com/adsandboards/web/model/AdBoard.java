@@ -23,6 +23,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Entity(name = "tblAdboard")
 public class AdBoard extends BaseModel {
 
+	private String boardUUID;
 	private String street;
 	private float locationLatitude;
 	private float locationLongitude;
@@ -40,12 +41,10 @@ public class AdBoard extends BaseModel {
 		// Empty Constructor
 	}
 
-	public AdBoard(String street, float locationLatitude,
-			float locationLongitude, String detailedLocation,
-			Integer contractDays, Date contractStartDate, Integer length,
-			Integer breadth, String uom, BoardType boardType, City city,
-			Account account) {
+	public AdBoard(String boardUUID, String street, float locationLatitude, float locationLongitude, String detailedLocation, Integer contractDays, Date contractStartDate, Integer length,
+			Integer breadth, String uom, BoardType boardType, City city, Account account) {
 		super();
+		this.boardUUID = boardUUID;
 		this.street = street;
 		this.locationLatitude = locationLatitude;
 		this.locationLongitude = locationLongitude;
@@ -66,6 +65,14 @@ public class AdBoard extends BaseModel {
 	@Column(name = "adboardId")
 	public Long getId() {
 		return super.getId();
+	}
+
+	public String getBoardUUID() {
+		return boardUUID;
+	}
+
+	public void setBoardUUID(String boardUUID) {
+		this.boardUUID = boardUUID;
 	}
 
 	public String getStreet() {
@@ -180,8 +187,7 @@ public class AdBoard extends BaseModel {
 		Date currentDate = new Date();
 		Calendar contractEndDate = Calendar.getInstance();
 		contractEndDate.add(Calendar.DAY_OF_MONTH, contractDays);
-		if (!(currentDate.after(contractStartDate) && contractEndDate
-				.after(currentDate)))
+		if (!(currentDate.after(contractStartDate) && contractEndDate.after(currentDate)))
 			return false;
 		return true;
 	}

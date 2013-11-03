@@ -40,37 +40,6 @@ CREATE TABLE `tblAccount` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblAdboard`
---
-
-DROP TABLE IF EXISTS `tblAdboard`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblAdboard` (
-  `adboardId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `contractDays` int(11) DEFAULT NULL,
-  `contractStartDate` datetime DEFAULT NULL,
-  `locLat` float DEFAULT NULL,
-  `locLong` float DEFAULT NULL,
-  `detailedLocation` varchar(255) DEFAULT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `accountId` bigint(20) DEFAULT NULL,
-  `cityId` bigint(20) NOT NULL,
-  `boardTypeId` bigint(20) NOT NULL,
-  `uom` varchar(10) DEFAULT NULL,
-  `length` int(11) DEFAULT '0',
-  `breadth` int(11) DEFAULT '0',
-  PRIMARY KEY (`adboardId`),
-  KEY `fk_adboard_account` (`accountId`),
-  KEY `fk_adboard_city` (`cityId`),
-  KEY `fk_adboard_boardtype` (`boardTypeId`),
-  CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
-  CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
-  CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `tblAdboardEnquiryHistory`
 --
 
@@ -231,6 +200,38 @@ CREATE TABLE `tblUserRole` (
   CONSTRAINT `fk_userrole_user` FOREIGN KEY (`userId`) REFERENCES `tblappuser` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbladboard`
+--
+
+DROP TABLE IF EXISTS `tbladboard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbladboard` (
+  `adboardId` bigint(20) NOT NULL AUTO_INCREMENT,
+  `boardUUID` varchar(50) DEFAULT NULL,
+  `contractDays` int(11) DEFAULT NULL,
+  `contractStartDate` datetime DEFAULT NULL,
+  `locLat` float DEFAULT NULL,
+  `locLong` float DEFAULT NULL,
+  `detailedLocation` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `accountId` bigint(20) DEFAULT NULL,
+  `cityId` bigint(20) NOT NULL,
+  `boardTypeId` bigint(20) NOT NULL,
+  `uom` varchar(10) DEFAULT NULL,
+  `length` int(11) DEFAULT '0',
+  `breadth` int(11) DEFAULT '0',
+  PRIMARY KEY (`adboardId`),
+  KEY `fk_adboard_account` (`accountId`),
+  KEY `fk_adboard_city` (`cityId`),
+  KEY `fk_adboard_boardtype` (`boardTypeId`),
+  CONSTRAINT `fk_adboard_account` FOREIGN KEY (`accountId`) REFERENCES `tblaccount` (`accountId`),
+  CONSTRAINT `fk_adboard_boardtype` FOREIGN KEY (`boardTypeId`) REFERENCES `tblboardtype` (`boardTypeId`),
+  CONSTRAINT `fk_adboard_city` FOREIGN KEY (`cityId`) REFERENCES `tblcity` (`cityId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -241,4 +242,4 @@ CREATE TABLE `tblUserRole` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-12 19:33:47
+-- Dump completed on 2013-11-03 20:25:48

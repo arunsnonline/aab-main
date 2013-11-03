@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 
@@ -18,6 +19,13 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements AdB
 
 	public AdBoardDaoImpl() {
 		super(AdBoard.class);
+	}
+
+	@Override
+	public AdBoard save(AdBoard adboard) {
+		if (adboard.getBoardUUID() == null || adboard.getBoardUUID().isEmpty())
+			adboard.setBoardUUID(UUID.randomUUID().toString());
+		return super.save(adboard);
 	}
 
 	@Override
