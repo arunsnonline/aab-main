@@ -18,20 +18,13 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 	}
 
 	@Override
-	public boolean authenticateUser(String userName, String password) {
-		logger.debug("***********userName******:" + userName + ">>>>>>>>>>>"
-				+ password);
+	public List<User> authenticateUser(String userName, String password) {
+		logger.debug("***********userName******:" + userName + ">>>>>>>>>>>" + password);
 		password = MD5Convertor.convertToMD5(password);
-		List<User> userList = QueryUtil
-				.listAndCast(this.entityManager
-						.createQuery(
-								"select u from "
-										+ User.class.getName()
-										+ " u where u.username=:username and u.password=:password")
-						.setParameter("username", userName)
-						.setParameter("password", password));
+		List<User> userList = QueryUtil.listAndCast(this.entityManager.createQuery("select u from " + User.class.getName() + " u where u.username=:username and u.password=:password")
+				.setParameter("username", userName).setParameter("password", password));
 		logger.debug("***********user list******:" + userList.size());
-		return userList.size() > 0 ? true : false;
+		return userList;
 	}
 
 }

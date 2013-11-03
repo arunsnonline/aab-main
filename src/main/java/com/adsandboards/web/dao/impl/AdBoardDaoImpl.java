@@ -31,11 +31,6 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements AdB
 		if (cityId != null) {
 			adBoards = QueryUtil.listAndCast(this.entityManager.createQuery(query).setFirstResult(start).setMaxResults(length));
 		}
-		/*if (cityId != null) {
-			adBoards = QueryUtil.listAndCast(this.entityManager.createQuery("select u from " + AdBoard.class.getName() + " u where u.city.id=:cityId" + " and u.street like :street")
-					.setParameter("cityId", cityId).setParameter("street", searchCriteria.getAdboard().getStreet() != null ? "%" + searchCriteria.getAdboard().getStreet() + "%" : "")
-					.setFirstResult(start).setMaxResults(length));
-		}*/
 
 		return adBoards;
 	}
@@ -50,20 +45,12 @@ public class AdBoardDaoImpl extends GenericDaoImpl<AdBoard, Long> implements AdB
 	@Override
 	public Long getAllBoardsForCriteriaLength(SearchCriteria searchCriteria) {
 		logger.info("street query length,,,,,,,,,,,,,,,,,,,,,BBBBBB,,,,,,,,,,,,****************:");
-		logger.info("street query length,,,,,,,,,,,,,,,PRINTTTTTTTTTTTTTTTTTTTT,,,,,,,,,,,,****************:");
-
-		logger.info("detailed location....................*****........." + searchCriteria.getAdboard().getDetailedLocation());
 		Long totalCount = 0L;
 		Long cityId = searchCriteria.getAdboard().getCity() != null ? searchCriteria.getAdboard().getCity().getId() : null;
 		String query = getSearchQuery(searchCriteria, true);
 		if (cityId != null) {
 			totalCount = (Long) this.entityManager.createQuery(query).getSingleResult();
 		}
-		/*if (cityId != null) {
-			totalCount = (Long) this.entityManager.createQuery("select count(*) from " + AdBoard.class.getName() + " u where u.city.id=:cityId" + " and u.street like :street")
-					.setParameter("street", searchCriteria.getAdboard().getStreet() != null ? "%" + searchCriteria.getAdboard().getStreet() + "%" : "").setParameter("cityId", cityId)
-					.getSingleResult();
-		}*/
 		return totalCount;
 	}
 

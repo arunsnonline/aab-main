@@ -1,13 +1,14 @@
 package com.adsandboards.web.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.adsandboards.web.dao.UserDao;
 import com.adsandboards.web.model.User;
 import com.adsandboards.web.service.UserService;
 
-public class UserServiceImpl extends GenericServiceImpl<User, Long> implements
-		UserService {
+public class UserServiceImpl extends GenericServiceImpl<User, Long> implements UserService {
 
 	private UserDao userDao;
 
@@ -18,7 +19,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements
 	}
 
 	@Override
-	public boolean authenticateUser(String userName, String password) {
+	public List<User> authenticateUser(String userName, String password) {
 		return this.userDao.authenticateUser(userName, password);
 	}
 }

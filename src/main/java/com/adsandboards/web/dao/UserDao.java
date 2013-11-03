@@ -1,9 +1,11 @@
 package com.adsandboards.web.dao;
 
+import java.util.List;
+
 import com.adsandboards.web.model.User;
 
 public interface UserDao extends GenericDao<User, Long> {
 
-	public boolean authenticateUser(String userName, String password);
+	public List<User> authenticateUser(String userName, String password);
 
 }

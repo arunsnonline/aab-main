@@ -31,7 +31,7 @@
 							</ul>
 						</div>
 					</div>
-					
+					<a href='logout'>Logout</a>
 					<div class="footer">
 						<p>
 							&copy; Copyright 2010. Designed by <a target="_blank"

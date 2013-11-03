@@ -39,8 +39,7 @@ public abstract class GenericController<T, PK extends Serializable> {
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				dateFormat, false));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 
 	protected abstract T getNewCommand();
@@ -52,13 +51,10 @@ public abstract class GenericController<T, PK extends Serializable> {
 
 	@RequestMapping(value = "/list.htm", method = RequestMethod.GET)
 	@ResponseBody
-	public DisplayGrid<T> getAll(
-			@RequestParam(value = "iDisplayStart") int start,
-			@RequestParam(value = "iDisplayLength") int length) {
+	public DisplayGrid<T> getAll(@RequestParam(value = "iDisplayStart") int start, @RequestParam(value = "iDisplayLength") int length) {
 		List<T> list = this.genericService.getAll(start, length);
 		Long totalCount = this.genericService.getTotalCount();
-		DisplayGrid<T> displayGrid = new DisplayGrid<T>(totalCount, totalCount,
-				list);
+		DisplayGrid<T> displayGrid = new DisplayGrid<T>(totalCount, totalCount, list);
 		return displayGrid;
 	}
 
@@ -71,8 +67,7 @@ public abstract class GenericController<T, PK extends Serializable> {
 	}
 
 	@RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
-	public String addModel(@ModelAttribute("modelObject") T t,
-			BindingResult bindingResult) {
+	public String addModel(@ModelAttribute("modelObject") T t, BindingResult bindingResult) {
 		genericService.save(t);
 		return "redirect:" + getRedirectName();
 	}
